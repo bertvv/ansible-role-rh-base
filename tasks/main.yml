@@ -1,0 +1,16 @@
+# roles/rh-base/tasks/main.yml
+---
+
+- name: Install packages
+  yum:
+    pkg: "{{ item }}"
+    state: installed
+  with_items: "{{ rh-base_packages }}"
+  tags: rh-base
+
+- name: Ensure service is started
+  service:
+    name: "{{ rh-base_service }}"
+    state: started
+    enabled: true
+  tags: rh-base

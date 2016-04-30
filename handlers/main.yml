@@ -1,0 +1,7 @@
+# roles/rh-base/handlers/main.yml
+---
+
+- name: restart rh-base
+  service:
+    name: "{{ rh-base_service }}"
+    state: restarted

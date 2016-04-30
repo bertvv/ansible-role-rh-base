@@ -1,0 +1,13 @@
+---
+galaxy_info:
+  author: Bert Van Vreckem
+  description: PURPOSE
+  license: BSD
+  min_ansible_version: 2.0
+  platforms:
+    - name: EL
+      versions:
+        - 7
+  galaxy_tags:
+    - system
+dependencies: []
