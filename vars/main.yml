@@ -1,7 +1,0 @@
-# roles/rh-base/vars/main.yml
----
-
-rh-base_packages:
-  - rh-base
-
-rh-base_service: rh-based

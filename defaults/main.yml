@@ -1,4 +1,10 @@
 # roles/rh-base/defaults/main.yml
 ---
 
+# Package management
+rhbase_repo_gpgcheck: false
+rhbase_repo_installonly_limit: 3
+rhbase_repo_remove_dependencies: true
 
+# Security
+rhbase_selinux_state: enforcing

@@ -1,0 +1,77 @@
+# roles/el7/tasks/install.yml
+#
+# Install custom repositories and packages. Repositories should be installed
+# using an RPM package. A list of URLs to the RPMs for these repositories
+# should be specified in group_vars or host_vars.
+---
+# TODO: check mininal value of installonly_limit
+- name: Install | Package management configuration ({{ rhbase_package_manager }})
+  template:
+    src: etc_{{ rhbase_package_manager }}.conf.j2
+    dest: "{{ rhbase_package_manager_configuration }}"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Ensure specified external repositories are installed
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_repositories }}"
+  when: rhbase_repositories is defined
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Role/Ansible dependencies
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_dependencies }}"
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Ensure specified repositories are enabled
+  lineinfile:
+    dest: "/etc/yum.repos.d/{{ item }}.repo"
+    line: 'enabled=1'
+    state: present
+    regexp: '^enabled='
+  with_items: "{{ rhbase_enable_repos }}"
+  when: rhbase_enable_repos is defined
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Ensure specified packages are installed
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_install_packages }}"
+  when: rhbase_install_packages is defined
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Ensure specified packages are NOT installed
+  package:
+    name: "{{ item }}"
+    state: absent
+  with_items: "{{ rhbase_remove_packages }}"
+  when: rhbase_remove_packages is defined
+  tags:
+    - rh-base
+    - install
+
+- name: Install | Ensure all updates are installed
+  package:
+    name: '*'
+    state: latest
+  when: rhbase_update
+  tags:
+    - rh-base
+    - install

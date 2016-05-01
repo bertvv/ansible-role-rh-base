@@ -1,0 +1,9 @@
+# roles/rh-base/vars/Fedora.yml
+---
+
+rhbase_dependencies:
+  - libselinux-python
+  - libsemanage-python
+
+rhbase_package_manager: dnf
+rhbase_package_manager_configuration: /etc/dnf/dnf.conf

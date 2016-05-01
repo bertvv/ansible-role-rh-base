@@ -1,16 +1,15 @@
-# roles/rh-base/tasks/main.yml
+# roles/el7/tasks/main.yml
 ---
 
-- name: Install packages
-  yum:
-    pkg: "{{ item }}"
-    state: installed
-  with_items: "{{ rh-base_packages }}"
-  tags: rh-base
+- include_vars: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}.yml"
 
-- name: Ensure service is started
-  service:
-    name: "{{ rh-base_service }}"
-    state: started
-    enabled: true
-  tags: rh-base
+- include: install.yml  # Install repositories and packages
+#- include: config.yml   # Configuration (/etc/)
+#- include: services.yml # Start/stop basic services
+#- include: security.yml # Security settings
+#- include: users.yml    # Create users
+#- include: admin.yml    # Admin user (a.o. SSH key)
+
