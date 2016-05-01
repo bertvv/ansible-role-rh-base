@@ -1,0 +1,8 @@
+# Fedora.yml
+# Variables specific for Fedora
+---
+
+rhbase_repositories:
+  - epel-release
+rhbase_enable_repos:
+  - CentOS-fasttrack

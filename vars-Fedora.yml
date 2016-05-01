@@ -1,0 +1,8 @@
+# Fedora.yml
+# Variables specific for Fedora
+---
+
+rhbase_repositories:
+  - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-23.noarch.rpm
+rhbase_enable_repos:
+  - fedora-updates-testing

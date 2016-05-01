@@ -4,9 +4,10 @@ VAGRANTFILE_API_VERSION = '2'
 ROLE_NAME = 'base'
 
 hosts = [
-  { distro: 'centos71', ip: '192.168.56.2' },
-  { distro: 'centos72', ip: '192.168.56.3' },
-  { distro: 'fedora23', ip: '192.168.56.4' }
+  { maintainer: 'geerlingguy', distro: 'centos6', ip: '192.168.56.2' },
+  { maintainer: 'bertvv', distro: 'centos71', ip: '192.168.56.3' },
+  { maintainer: 'bertvv', distro: 'centos72', ip: '192.168.56.4' },
+  { maintainer: 'bertvv', distro: 'fedora23', ip: '192.168.56.5' }
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
@@ -14,7 +15,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     host_name = host[:distro] + '-' + ROLE_NAME
 
     config.vm.define host_name do |node|
-      node.vm.box = 'bertvv/' + host[:distro]
+      node.vm.box = host[:maintainer] + '/' + host[:distro]
       node.vm.hostname = host_name
       node.vm.network :private_network, ip: host[:ip]
       node.vm.provision 'ansible' do |ansible|
