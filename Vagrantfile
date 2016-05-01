@@ -18,9 +18,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       node.vm.box = host[:maintainer] + '/' + host[:distro]
       node.vm.hostname = host_name
       node.vm.network :private_network, ip: host[:ip]
-      node.vm.provision 'ansible' do |ansible|
-        ansible.playbook = 'test.yml'
-      end
     end
+  end
+  config.vm.provision 'ansible' do |ansible|
+    ansible.playbook = 'test.yml'
   end
 end
