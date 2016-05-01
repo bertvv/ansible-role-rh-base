@@ -1,0 +1,66 @@
+# roles/rhbase/tasks/config.yml
+---
+
+# This speeds up the Gathering Facts phase and several other situations where
+# a DNS lookup is performed on the host name.
+- name: Config | Ensure host name is in the hosts file
+  lineinfile:
+    dest: /etc/hosts
+    state: present
+    line: "{{ ansible_all_ipv4_addresses|last }} {{ ansible_hostname }} {{ ansible_hostname }}.{{ ansible_domain }}"
+    regexp: "{{ ansible_hostname }}"
+  when: rhbase_hosts_entry
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Install custom `/etc/motd` file
+  template:
+    src: etc_motd
+    dest: /etc/motd
+    owner: root
+    group: root
+    mode: 0644
+  when: rhbase_motd == true
+  tags:
+    - rhbase
+    - config
+
+# Workaround for bug https://bugs.centos.org/view.php?id=7407
+# NetworkManager by default manages firewall zones, which overrides rules you
+# add with --permanent.
+
+- name: Config | Check if ifup-eth script overrides firewall zone
+  shell: 'grep "Inform firewall which network zone" /etc/sysconfig/network-scripts/ifup-eth'
+  register: ifup_eth_match
+  when: rhbase_dont_override_firewalld_zones
+  changed_when: false
+  failed_when: false
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Don’t override firewall zone in ifup-eth script
+  shell: "sed -i -e '/Inform firewall which network zone/,+4d' /etc/sysconfig/network-scripts/ifup-eth"
+  when: rhbase_dont_override_firewalld_zones and ifup_eth_match.stdout != ''
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Check if ifup-post script overrides firewall zone
+  shell: 'grep "Inform firewall which network zone" /etc/sysconfig/network-scripts/ifup-post'
+  register: ifup_post_match
+  when: rhbase_dont_override_firewalld_zones
+  changed_when: false
+  failed_when: false
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Don’t override firewall zone in ifup-post script
+  shell: "sed -i -e '/Inform firewall which network zone/,+4d' /etc/sysconfig/network-scripts/ifup-post"
+  when: rhbase_dont_override_firewalld_zones and ifup_post_match.stdout != ''
+  tags:
+    - rhbase
+    - config
+

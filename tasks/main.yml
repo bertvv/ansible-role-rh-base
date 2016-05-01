@@ -7,7 +7,7 @@
     - "{{ ansible_os_family }}.yml"
 
 - include: install.yml  # Install repositories and packages
-#- include: config.yml   # Configuration (/etc/)
+- include: config.yml   # Configuration (/etc/)
 #- include: services.yml # Start/stop basic services
 #- include: security.yml # Security settings
 #- include: users.yml    # Create users
