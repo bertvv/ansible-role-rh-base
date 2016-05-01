@@ -52,7 +52,7 @@
     rhbase_repo_gpgcheck: false
     rhbase_repo_installonly_limit: 2
     rhbase_motd: true
-    #rhbase_hosts_entry: false
+    rhbase_hosts_entry: true
     rhbase_exclude_from_update:
       - kernel*
       - centos-release*
