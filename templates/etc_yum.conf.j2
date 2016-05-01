@@ -1,18 +1,8 @@
 [main]
-cachedir=/var/cache/yum/$basearch/$releasever
-keepcache=0
-debuglevel=2
-logfile=/var/log/yum.log
-exactarch=1
-obsoletes=1
 gpgcheck={% if rhbase_repo_gpgcheck %}1{% else %}0{% endif %}
-
+installonly_limit={{ rhbase_repo_installonly_limit }}
 clean_requirements_on_remove={% if rhbase_repo_remove_dependencies %}1{% else %}0{% endif %}
 
-plugins=1
-{% if rhbase_exclude_from_update is defined %}
-exclude={% for item in rhbase_exclude_from_update %}{{ item }} {%endfor %}
+{% if rhbase_repo_exclude is defined %}
+exclude={% for item in rhbase_repo_exclude %}{{ item }} {%endfor %}
 {% endif %}
-
-# Keep minimal number of old kernels
-installonly_limit={{ rhbase_repo_installonly_limit }}
