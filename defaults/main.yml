@@ -10,5 +10,9 @@ rhbase_repo_remove_dependencies: true
 rhbase_hosts_entry: false
 rhbase_dont_override_firewalld_zones: true
 
+# Services
+rhbase_start_services: []
+rhbase_stop_services: []
+
 # Security
 rhbase_selinux_state: enforcing
