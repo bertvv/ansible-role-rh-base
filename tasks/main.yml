@@ -11,5 +11,5 @@
 - include: services.yml # Start/stop basic services
 - include: security.yml # Security settings
 - include: users.yml    # Create users
-#- include: admin.yml    # Admin user (a.o. SSH key)
+- include: admin.yml    # Admin user (a.o. SSH key)
 

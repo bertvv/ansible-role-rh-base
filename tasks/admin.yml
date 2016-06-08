@@ -1,0 +1,35 @@
+# roles/rhbase/tasks/admin.yml
+#
+# Settings regarding the admin user
+---
+- name: Admin | Make sure users from the wheel group can use sudo
+  lineinfile:
+    dest: /etc/sudoers.d/wheel
+    state: present
+    create: yes
+    regexp: '^%wheel'
+    line: '%wheel ALL=(ALL) ALL'
+    validate: 'visudo -cf %s'
+  tags:
+    - rhbase
+    - admin
+
+- name: Admin | Set attributes of sudo configuration file for wheel group
+  file:
+    path: /etc/sudoers.d/wheel
+    owner: root
+    group: root
+    mode: 0440
+  tags:
+    - rhbase
+    - admin
+
+- name: Admin | Set up SSH key for admin user
+  authorized_key:
+    user: "{{ rhbase_admin_user }}"
+    key: "{{ rhbase_admin_ssh_key }}"
+  when: rhbase_admin_user is defined
+  tags:
+    - rhbase
+    - admin
+
