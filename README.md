@@ -2,7 +2,12 @@
 
 Ansible role for basic setup of a server with a RedHat-based Linux distribution (CentOS, Fedora, RHEL, ...). Specifically, the responsibilities of this role are to:
 
--
+- Manage repositories,
+- Manage package installation and removal,
+- Turn specified services on or off,
+- Create users and groups,
+- Set up an administrator account with an SSH key,
+- Apply basic security settings, like turning on SELinux and the firewall.
 
 ## Requirements
 
