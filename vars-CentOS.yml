@@ -6,3 +6,10 @@ rhbase_repositories:
   - epel-release
 rhbase_enable_repos:
   - CentOS-fasttrack
+rhbase_install_packages:
+  - tree
+  - bash-completion
+
+rhbase_stop_services:
+  - postfix
+

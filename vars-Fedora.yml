@@ -3,6 +3,12 @@
 ---
 
 rhbase_repositories:
-  - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-23.noarch.rpm
+  - http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-stable.noarch.rpm
 rhbase_enable_repos:
   - fedora-updates-testing
+rhbase_install_packages:
+  - tree
+  - bash-completion
+  - firewalld
+  - python-firewall
+
