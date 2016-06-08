@@ -16,7 +16,6 @@
     enabled: true
     state: started
   with_items: "{{ rhbase_start_services }}"
-  when: rhbase_start_services is defined
   tags:
     - rhbase
     - services
@@ -27,7 +26,6 @@
     enabled: false
     state: stopped
   with_items: "{{ rhbase_stop_services }}"
-  when: rhbase_stop_services is defined
   tags:
     - rhbase
     - services

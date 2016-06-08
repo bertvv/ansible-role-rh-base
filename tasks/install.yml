@@ -21,7 +21,6 @@
     name: "{{ item }}"
     state: installed
   with_items: "{{ rhbase_repositories }}"
-  when: rhbase_repositories is defined
   tags:
     - rh-base
     - install
@@ -42,7 +41,6 @@
     state: present
     regexp: '^enabled='
   with_items: "{{ rhbase_enable_repos }}"
-  when: rhbase_enable_repos is defined
   tags:
     - rh-base
     - install
@@ -52,7 +50,6 @@
     name: "{{ item }}"
     state: installed
   with_items: "{{ rhbase_install_packages }}"
-  when: rhbase_install_packages is defined
   tags:
     - rh-base
     - install
@@ -62,7 +59,6 @@
     name: "{{ item }}"
     state: absent
   with_items: "{{ rhbase_remove_packages }}"
-  when: rhbase_remove_packages is defined
   tags:
     - rh-base
     - install
