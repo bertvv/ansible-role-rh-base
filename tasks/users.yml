@@ -1,0 +1,27 @@
+# roles/rhbase/tasks/users.yml
+#
+# Create groups and users on the system
+---
+- name: Users | Add groups
+  group:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ rhbase_user_groups }}"
+  tags:
+    - rhbase
+    - users
+
+- name: Users | Add users
+  user:
+    name: "{{ item.name }}"
+    state: present
+    comment: "{{ item.comment }}"
+    shell: "{{ item.shell|default('/bin/bash') }}"
+    createhome: yes
+    groups: "{{ ','.join(item.groups) }}"
+    password: "{{ item.password }}"
+  with_items: "{{ rhbase_users }}"
+  tags:
+    - rhbase
+    - users
+
