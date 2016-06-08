@@ -4,7 +4,6 @@ VAGRANTFILE_API_VERSION = '2'
 ROLE_NAME = 'base'
 
 hosts = [
-  { maintainer: 'geerlingguy', distro: 'centos6', ip: '192.168.56.2' },
   { maintainer: 'bertvv', distro: 'centos71', ip: '192.168.56.3' },
   { maintainer: 'bertvv', distro: 'centos72', ip: '192.168.56.4' },
   { maintainer: 'bertvv', distro: 'fedora23', ip: '192.168.56.5' }
