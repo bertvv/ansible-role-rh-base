@@ -16,6 +16,7 @@ rhbase_update: false
 # Configuration
 rhbase_override_firewalld_zones: false
 rhbase_hosts_entry: false
+rhbase_motd: false
 
 # Services
 rhbase_start_services: []
@@ -25,3 +26,7 @@ rhbase_stop_services: []
 rhbase_firewall_allow_services: []
 rhbase_firewall_allow_ports: []
 rhbase_selinux_state: enforcing
+
+# Users
+rhbase_users: []
+rhbase_user_groups: []
