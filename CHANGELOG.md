@@ -8,5 +8,5 @@ First release!
 
 ### Added
 
-- FEATURE
+- Functionality from roles [bertvv.el7](https://galaxy.ansible.com/bertvv/el7) and [bertvv.fedora](https://galaxy.ansible.com/bertvv/fedora).
 
