@@ -2,17 +2,26 @@
 ---
 
 # Package management
+rhbase_enable_repos: []
+rhbase_install_packages: []
+rhbase_remove_packages: []
+rhbase_repo_exclude: []
 rhbase_repo_gpgcheck: false
 rhbase_repo_installonly_limit: 3
 rhbase_repo_remove_dependencies: true
+rhbase_repositories: []
+rhbase_update: false
+
 
 # Configuration
+rhbase_override_firewalld_zones: false
 rhbase_hosts_entry: false
-rhbase_dont_override_firewalld_zones: true
 
 # Services
 rhbase_start_services: []
 rhbase_stop_services: []
 
 # Security
+rhbase_firewall_allow_services: []
+rhbase_firewall_allow_ports: []
 rhbase_selinux_state: enforcing
