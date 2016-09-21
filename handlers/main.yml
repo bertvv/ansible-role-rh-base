@@ -1,7 +1,7 @@
 # roles/rh-base/handlers/main.yml
 ---
 
-- name: restart firewall
+- name: restart firewalld
   service:
     name: firewalld
     state: restarted
