@@ -9,7 +9,7 @@
     msg: "The value of ‘rhbase_repo_installonly_limit’ should be at least 2, but is {{ rhbase_repo_installonly_limit }}."
   failed_when: rhbase_repo_installonly_limit < 2
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Package management configuration ({{ rhbase_package_manager }})
@@ -20,7 +20,7 @@
     group: root
     mode: 0644
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Ensure specified external repositories are installed
@@ -29,7 +29,7 @@
     state: installed
   with_items: "{{ rhbase_repositories }}"
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Role/Ansible dependencies
@@ -38,7 +38,7 @@
     state: installed
   with_items: "{{ rhbase_dependencies }}"
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Ensure specified repositories are enabled
@@ -49,7 +49,7 @@
     regexp: '^enabled='
   with_items: "{{ rhbase_enable_repos }}"
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Ensure specified packages are installed
@@ -58,7 +58,7 @@
     state: installed
   with_items: "{{ rhbase_install_packages }}"
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Ensure specified packages are NOT installed
@@ -67,7 +67,7 @@
     state: absent
   with_items: "{{ rhbase_remove_packages }}"
   tags:
-    - rh-base
+    - rhbase
     - install
 
 - name: Install | Ensure all updates are installed
@@ -76,5 +76,5 @@
     state: latest
   when: rhbase_update
   tags:
-    - rh-base
+    - rhbase
     - install

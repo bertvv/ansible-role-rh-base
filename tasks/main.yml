@@ -5,7 +5,7 @@
   with_first_found:
     - "{{ ansible_distribution }}.yml"
     - "{{ ansible_os_family }}.yml"
-  tags: rh-base
+  tags: rhbase
 
 - include: install.yml  # Install repositories and packages
 - include: config.yml   # Configuration (/etc/)
