@@ -2,6 +2,14 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 1.0.2 - 2016-09-20
+
+Bugfix release
+
+### Changed
+
+- Fixed tag names in tasks
+
 ## 1.0.1 - 2016-09-21
 
 Bugfix release
