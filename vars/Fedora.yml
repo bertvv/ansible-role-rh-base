@@ -4,6 +4,7 @@
 rhbase_dependencies:
   - libselinux-python
   - libsemanage-python
+  - python-firewall
 
 rhbase_package_manager: dnf
 rhbase_package_manager_configuration: /etc/dnf/dnf.conf

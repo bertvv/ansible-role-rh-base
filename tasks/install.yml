@@ -12,6 +12,15 @@
     - rhbase
     - install
 
+- name: Install | Role/Ansible dependencies
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_dependencies }}"
+  tags:
+    - rhbase
+    - install
+
 - name: Install | Package management configuration ({{ rhbase_package_manager }})
   template:
     src: etc_{{ rhbase_package_manager }}.conf.j2
@@ -28,15 +37,6 @@
     name: "{{ item }}"
     state: installed
   with_items: "{{ rhbase_repositories }}"
-  tags:
-    - rhbase
-    - install
-
-- name: Install | Role/Ansible dependencies
-  package:
-    name: "{{ item }}"
-    state: installed
-  with_items: "{{ rhbase_dependencies }}"
   tags:
     - rhbase
     - install
