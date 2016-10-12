@@ -15,11 +15,10 @@ No specific requirements
 
 ## Role Variables
 
-
 | Variable                          | Default   | Comments (type)                                                                                                       |
 | :---                              | :---      | :---                                                                                                                  |
 | `rhbase_admin_ssh_key`            | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
-| `rhbase_admin_user`               | -         | The name of the user that will manage this machine.                                                                   |
+| `rhbase_admin_user`               | -         | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.     |
 | `rhbase_override_firewalld_zones` | false     | When set, allows NetworkManager to override firewall zones set by the administrator†.                                 |
 | `rhbase_enable_repos`             | []        | List of dicts specifying repositories to be enabled. See below for details.                                           |
 | `rhbase_exclude_from_update`      | []        | List of packages to be excluded from an update. Wildcards allowed, e.g. `kernel*`.                                    |
@@ -46,10 +45,10 @@ No specific requirements
 
 ### Enabling repositories
 
-Enable repositories by specifying `el7_enable_repositories` as a list of dicts with keys `name:` (required) and `section:` (optional), e.g.:
+Enable (installed, but disabled) repositories by specifying `rhbase_enable_repos` as a list of dicts with keys `name:` (required) and `section:` (optional), e.g.:
 
 ```Yaml
-el7_enable_repositories:
+rhbase_enable_repos:
   - name: CentOS-fasttrack
     section: fasttrack
   - name: epel-testing
@@ -62,7 +61,7 @@ When the section is not specified, it defaults to the repository name.
 Users are specified by dicts like this:
 
 ```Yaml
-el7_users:
+rhbase_users:
   - name: johndoe
     comment: 'John Doe'
     groups:
@@ -71,7 +70,9 @@ el7_users:
     password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
 ```
 
-Optionally, you can specify the `shell`, which defaults to `/bin/bash`.
+If you want to make a user an administrator, make sure they are member of the group `wheel` (See [RedHat System Administrator's Guide](https://access.redhat.com/documentation/en-US/Red_Hat_Enterprise_Linux/7/html/System_Administrators_Guide/chap-Gaining_Privileges.html#sect-Gaining_Privileges-The_su_Command).
+
+Optionally, you can specify the `shell`, which defaults to `/bin/bash`. The password should be specified as a hash, as returned by [crypt(3)](http://man7.org/linux/man-pages/man3/crypt.3.html), in the form `$algo$salt$hash`. For tests and proof-of-concept VMs, you can take a look at <https://www.mkpasswd.net/> for generating hashes in the correct form. When you do, be sure to remove `rounds=5000$` from the resulting hash string.
 
 ## Dependencies
 
@@ -79,7 +80,7 @@ No dependencies.
 
 ## Example Playbook
 
-See the [test playbook](https://github.com/bertvv/ansible-role-rhbase/blob/master/tests/test.yml)
+See the [test playbook](https://github.com/bertvv/ansible-role-rh-base/blob/tests/test.yml)
 
 ## Testing
 
