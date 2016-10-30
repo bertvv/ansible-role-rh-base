@@ -4,13 +4,26 @@
 # using an RPM package. A list of URLs to the RPMs for these repositories
 # should be specified in group_vars or host_vars.
 ---
-- name: Check minimal value of ‘rhbase_repo_installonly_limit’ (>= 2)
+- name: Install | Check minimal value of ‘rhbase_repo_installonly_limit’ (>= 2)
   debug:
-    msg: "The value of ‘rhbase_repo_installonly_limit’ should be at least 2, but is {{ rhbase_repo_installonly_limit }}."
+    msg: "The value of ‘rhbase_repo_installonly_limit’ should be at least 2, actual value is {{ rhbase_repo_installonly_limit }}."
   failed_when: rhbase_repo_installonly_limit < 2
   tags:
     - rhbase
     - install
+
+- name: Install | Ensure the machine-ID is available
+  command: systemd-machine-id-setup
+  args:
+    creates: /etc/machine-id
+  tags: rhbase
+
+- name: Install | Ensure the journal service is running
+  service:
+    name: systemd-journald
+    state: started
+    enabled: true
+  tags: rhbase
 
 - name: Install | Role/Ansible dependencies
   package:
