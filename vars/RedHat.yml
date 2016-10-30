@@ -4,6 +4,7 @@
 rhbase_dependencies:
   - libselinux-python
   - libsemanage-python
+  - firewalld
 
 rhbase_package_manager: yum
 rhbase_package_manager_configuration: /etc/yum.conf
