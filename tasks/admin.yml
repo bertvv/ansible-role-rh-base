@@ -24,12 +24,3 @@
     - rhbase
     - admin
 
-- name: Admin | Set up SSH key for admin user
-  authorized_key:
-    user: "{{ rhbase_admin_user }}"
-    key: "{{ rhbase_admin_ssh_key }}"
-  when: rhbase_admin_user is defined
-  tags:
-    - rhbase
-    - admin
-

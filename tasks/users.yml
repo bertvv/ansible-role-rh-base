@@ -25,3 +25,12 @@
     - rhbase
     - users
 
+
+- name: "Users | Set up SSH key for user {{ rhbase_ssh_user|default('(not specified)') }}"
+  authorized_key:
+    user: "{{ rhbase_ssh_user }}"
+    key: "{{ rhbase_ssh_key }}"
+  when: rhbase_ssh_user is defined
+  tags:
+    - rhbase
+    - users
