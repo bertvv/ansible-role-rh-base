@@ -9,6 +9,9 @@ rhbase_enable_repos:
 rhbase_install_packages:
   - tree
   - bash-completion
-  - firewalld
-  - python-firewall
+rhbase_remove_packages:
+  - wpa_supplicant
+rhbase_repo_exclude_from_update:
+  - kernel*
+  - fedora-release*
 

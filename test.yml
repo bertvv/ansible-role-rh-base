@@ -15,19 +15,14 @@
     - name: Include distro-specific variables
       include_vars: "vars-{{ ansible_distribution }}.yml"
   vars:
-    rhbase_admin_user: admin
-    rhbase_admin_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4MHsjCu/wAKQkwMvMdQuFMPPBXROtz8qA8ayD/opYNkvd7kIp9yv+thl5PNV5Ds/EObDeepKuKEyH1Td54YrQ0VOyKuAl9b6LrXG5ZZg6jzlwPvuWV1YT4AasMfg5Wb60C+lfT/wC52fi3Ls3QUnpj1YV6fcKgnjjjMOlQt+lS1dhMSy7Q2/qLkhhMsTi6jgiG0VbXRXYwedEN7I8wUAguyLJPwDHrEGfZv4WqjvVOx/zM+CEXMCJLY+sbUUlQBVFxfq9pQ8hoVd5sK3/BIuphp7zZFbXZAPy7PBnkmfhuUxROvgnoLzdERF/uSqFTxV4DtBXw3JLvmhd7QxzcU5J admin@example.com'
+    rhbase_ssh_user: admin
+    rhbase_ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQC4MHsjCu/wAKQkwMvMdQuFMPPBXROtz8qA8ayD/opYNkvd7kIp9yv+thl5PNV5Ds/EObDeepKuKEyH1Td54YrQ0VOyKuAl9b6LrXG5ZZg6jzlwPvuWV1YT4AasMfg5Wb60C+lfT/wC52fi3Ls3QUnpj1YV6fcKgnjjjMOlQt+lS1dhMSy7Q2/qLkhhMsTi6jgiG0VbXRXYwedEN7I8wUAguyLJPwDHrEGfZv4WqjvVOx/zM+CEXMCJLY+sbUUlQBVFxfq9pQ8hoVd5sK3/BIuphp7zZFbXZAPy7PBnkmfhuUxROvgnoLzdERF/uSqFTxV4DtBXw3JLvmhd7QxzcU5J admin@example.com'
     rhbase_firewall_allow_services:
       - http
       - https
     rhbase_firewall_allow_ports:
       - 8080/tcp
       - 53/udp
-    rhbase_remove_packages:
-      - NetworkManager
-      - NetworkManager-glib
-      - NetworkManager-tui
-      - wpa_supplicant
     rhbase_start_services:
       - sshd
     rhbase_user_groups:
@@ -48,9 +43,6 @@
     rhbase_repo_installonly_limit: 2
     rhbase_motd: true
     rhbase_hosts_entry: true
-    rhbase_exclude_from_update:
-      - kernel*
-      - centos-release*
     rhbase_update: true
   roles:
     - rh-base

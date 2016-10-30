@@ -9,6 +9,15 @@ rhbase_enable_repos:
 rhbase_install_packages:
   - tree
   - bash-completion
+rhbase_remove_packages:
+  - NetworkManager
+  - NetworkManager-glib
+  - NetworkManager-tui
+  - wpa_supplicant
+
+rhbase_repo_exclude_from_update:
+  - kernel*
+  - centos-release*
 
 rhbase_stop_services:
   - postfix
