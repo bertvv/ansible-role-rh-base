@@ -9,9 +9,9 @@ rhbase_repo_exclude: []
 rhbase_repo_gpgcheck: false
 rhbase_repo_installonly_limit: 3
 rhbase_repo_remove_dependencies: true
+rhbase_repo_exclude_from_update: []
 rhbase_repositories: []
 rhbase_update: false
-
 
 # Configuration
 rhbase_override_firewalld_zones: false
