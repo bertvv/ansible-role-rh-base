@@ -1,4 +1,4 @@
-# roles/el7/tasks/install.yml
+# roles/rhbase/tasks/install.yml
 #
 # Install custom repositories and packages. Repositories should be installed
 # using an RPM package. A list of URLs to the RPMs for these repositories
@@ -18,11 +18,12 @@
     creates: /etc/machine-id
   tags: rhbase
 
-- name: Install | Ensure the journal service is running
+- name: Install | Ensure basic systemd services are running
   service:
-    name: systemd-journald
+    name: "{{ item }}"
     state: started
     enabled: true
+  with_items: "{{ rhbase_systemd_services }}"
   tags: rhbase
 
 - name: Install | Role/Ansible dependencies

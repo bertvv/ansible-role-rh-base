@@ -1,5 +1,9 @@
 # roles/rh-base/vars/RedHat.yml
 ---
+rhbase_systemd_services:
+  - systemd-journald
+  - systemd-tmpfiles-setup-dev
+  - systemd-tmpfiles-setup
 
 rhbase_dependencies:
   - libselinux-python

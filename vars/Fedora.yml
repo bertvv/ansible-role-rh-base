@@ -1,5 +1,9 @@
 # roles/rh-base/vars/Fedora.yml
 ---
+rhbase_systemd_services:
+  - systemd-journald.service
+  - systemd-tmpfiles-setup-dev.service
+  - systemd-tmpfiles-setup.service
 
 rhbase_dependencies:
   - libselinux-python
