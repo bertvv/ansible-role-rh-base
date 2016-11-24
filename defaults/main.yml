@@ -25,6 +25,7 @@ rhbase_stop_services: []
 # Security
 rhbase_firewall_allow_services: []
 rhbase_firewall_allow_ports: []
+rhbase_firewall_interfaces: []
 rhbase_selinux_state: enforcing
 
 # Users

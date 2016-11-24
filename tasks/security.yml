@@ -56,4 +56,16 @@
   tags:
     - rhbase
     - security
+- name: Security | Make sure specified interfaces are added
+  firewalld:
+    interface: "{{ item }}"
+    zone: public
+    permanent: true
+    state: enabled
+  with_items: "{{ rhbase_firewall_interfaces }}"
+  notify:
+    - restart firewalld
+  tags:
+    - rhbase
+    - security
 
