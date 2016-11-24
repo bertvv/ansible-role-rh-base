@@ -7,7 +7,8 @@ Ansible role for basic setup of a server with a RedHat-based Linux distribution 
 - Turn specified services on or off,
 - Create users and groups,
 - Set up an administrator account with an SSH key,
-- Apply basic security settings, like turning on SELinux and the firewall.
+- Apply basic security settings, like turning on SELinux and the firewall,
+- Manage firewall rules (in the public zone).
 
 ## Requirements
 
@@ -17,11 +18,12 @@ No specific requirements
 
 | Variable                          | Default   | Comments (type)                                                                                                       |
 | :---                              | :---      | :---                                                                                                                  |
-| `rhbase_ssh_key`            | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
-| `rhbase_ssh_user`               | -         | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.     |
+| `rhbase_ssh_key`                  | -         | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
+| `rhbase_ssh_user`                 | -         | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.     |
 | `rhbase_enable_repos`             | []        | List of dicts specifying repositories to be enabled. See below for details.                                           |
 | `rhbase_firewall_allow_ports`     | []        | List of ports to be allowed to pass through the firewall, e.g. 80/tcp, 53/udp, etc.                                   |
 | `rhbase_firewall_allow_services`  | []        | List of services to be allowed to pass through the firewall, e.g. http, dns, etc..‡                                   |
+| `rhbase_firewall_interfaces`      | []        | List of network interfaces to be added to the public zone of the firewall ruleset.                                    |
 | `rhbase_hosts_entry`              | true      | When set, an entry is added to `/etc/hosts` with the machine's host name. This speeds up gathering facts.             |
 | `rhbase_install_packages`         | []        | List of packages that should be installed. URLs are also allowed.                                                     |
 | `rhbase_motd`                     | false     | When set, a custom `/etc/motd` is installed with info about the host name and IP addresses.                           |
@@ -41,6 +43,7 @@ No specific requirements
 | `rhbase_users`                    | []        | List of dicts specifying users that should be present. See below for an example.                                      |
 
 † This is a workaround for [CentOS bug #7407](https://bugs.centos.org/view.php?id=7407). NetworkManager by default manages firewall zones, which overrides rules you add with `--permanent`.
+
 ‡ A complete list of valid values for `rhbase_firewall_allow_services` can be enumerated with the command `firewall-cmd --get-services`.
 
 ### Enabling repositories
@@ -62,7 +65,7 @@ Users are specified by dicts like this:
 
 ```Yaml
 rhbase_users:
-  - name: johndoe
+  - [name](name): johndoe
     comment: 'John Doe'
     groups:
       - users

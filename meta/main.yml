@@ -1,9 +1,9 @@
 ---
 galaxy_info:
   author: Bert Van Vreckem
-  description: Ansible role for basic setup of a server with a RedHat-based Linux distribution (CentOS, Fedora, RHEL, ...).
+  description: Ansible role for basic setup of a server with a RedHat-based Linux distribution (CentOS, Fedora, RHEL, ...) with the systemd init system.
   license: BSD
-  min_ansible_version: 2.0
+  min_ansible_version: 2.1
   platforms:
     - name: EL
       versions:
@@ -11,6 +11,7 @@ galaxy_info:
     - name: Fedora
       versions:
         - 23
+        - 24
   galaxy_tags:
     - system
 dependencies: []

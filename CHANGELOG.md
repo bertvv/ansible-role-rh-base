@@ -2,6 +2,16 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 2.1.0 - 2016-11-24
+
+### Added
+
+- Variable `rhbase_firewall_interfaces` can now be used to add a network interface to the public zone.
+
+### Changed
+
+- The role now ensures essential systemd services (e.g. journald, tmpfiles) are running. The difference with previous version is that two services were added and they are now enumerated in a variable.
+
 ## 2.0.0 - 2016-10-30
 
 ### Added
@@ -11,7 +21,7 @@ This file contains al notable changes to the bertvv.rh-base Ansible role. This f
 
 ### Changed
 
-- Renamed variables `rhbase_admin_user` to `rhbase_ssh_user` and `rhbase_admin_ssh_key` to `rhbase_ssh_key`. The previous names were confusing, as the role did nothing special to make this user an admin (i.e. member of `wheel`). This is a breaking change, hence the major version bump.
+- (RH-2) Renamed variables `rhbase_admin_user` to `rhbase_ssh_user` and `rhbase_admin_ssh_key` to `rhbase_ssh_key`. The previous names were confusing, as the role did nothing special to make this user an admin (i.e. member of `wheel`). This is a breaking change, hence the major version bump.
 - Added `firewalld` to the list of packages to be installed as dependencies
 
 ## 1.0.2 - 2016-09-20
