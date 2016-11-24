@@ -1,5 +1,4 @@
-# roles/el7/tests/test_full.yml
-# Test playbook for the EL7 role with role variables set.
+# Test playbook for the bertvv.rh-base role with role variables set.
 #
 # The SSH keys for the admin user are stored in tests/sshkey. Check SSH login with e.g.
 #
@@ -23,6 +22,8 @@
     rhbase_firewall_allow_ports:
       - 8080/tcp
       - 53/udp
+    rhbase_firewall_interfaces:
+      - enp0s8
     rhbase_start_services:
       - sshd
     rhbase_user_groups:
