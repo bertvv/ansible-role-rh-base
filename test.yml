@@ -23,6 +23,7 @@
       - 8080/tcp
       - 53/udp
     rhbase_firewall_interfaces:
+      - enp0s3
       - enp0s8
     rhbase_start_services:
       - sshd
