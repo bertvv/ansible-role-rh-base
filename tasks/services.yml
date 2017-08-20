@@ -9,6 +9,15 @@
   tags:
     - rhbase
     - services
+    
+- name: Services | Ensure fail2ban daemon is running
+  service:
+    name: fail2ban
+    enabled: true
+    state: started
+  tags:
+    - rhbase
+    - services
 
 - name: Services | Ensure specified services are running
   service:

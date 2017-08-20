@@ -92,3 +92,10 @@
   tags:
     - rhbase
     - install
+- name: Install | fail2ban (RedHat)
+  yum: name=fail2ban state=present enablerepo=epel
+  when: ansible_os_family == 'RedHat'
+
+- name: Install | fail2ban (Debian)
+  apt: name=fail2ban state=present
+  when: ansible_os_family == 'Debian'

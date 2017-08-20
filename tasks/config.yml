@@ -63,4 +63,22 @@
   tags:
     - rhbase
     - config
+    
+- name: Config | Disable root login
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+  with_items:
+    - regexp: "^PermitRootLogin"
+      line: "PermitRootLogin {{ rhbase_ssh_permit_root_login }}"
+  notify: restart ssh
+- name: Config | Disable root shell
+  lineinfile:
+    dest: /etc/passwd
+    regexp: "^root:x:0:0:root:/root:/bin/bash"
+    line: "root:x:0:0:root:/root:/sbin/nologin"
+    state: present
+
 
