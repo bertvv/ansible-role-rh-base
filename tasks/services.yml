@@ -18,7 +18,7 @@
   tags:
     - rhbase
     - services
-
+ 
 - name: Services | Ensure specified services are running
   service:
     name: "{{ item }}"
@@ -38,3 +38,9 @@
   tags:
     - rhbase
     - services
+    
+- name: Services | Ensure yum-cron is running and enabled on boot.
+  service: 
+    name: yum-cron
+    enabled: true
+    state: started

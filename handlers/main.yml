@@ -5,11 +5,15 @@
   service:
     name: firewalld
     state: restarted
-- name: Restart fail2ban
+- name: restart fail2ban
   service: 
     name: fail2ban 
     state: restarted
 - name: restart ssh
   service:
     name: sshd
+    state: restarted
+- name: restart yum-cron
+  service:
+    name: yum-cron
     state: restarted

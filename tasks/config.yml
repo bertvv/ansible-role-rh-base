@@ -64,7 +64,7 @@
     - rhbase
     - config
     
-- name: Config | Disable root login
+- name: Config | Disable root login and disable password-based SSH authentication
   lineinfile:
     dest: /etc/ssh/sshd_config
     regexp: "{{ item.regexp }}"
@@ -73,7 +73,16 @@
   with_items:
     - regexp: "^PermitRootLogin"
       line: "PermitRootLogin {{ rhbase_ssh_permit_root_login }}"
+    - regexp: "^PasswordAuthentication"
+      line: "PasswordAuthentication {{ rhbase_ssh_password_authentication }}"
   notify: restart ssh
+  
+- name: Config | Copy jail.conf to jail.local
+  copy:
+    src: /etc/fail2ban/jail.conf
+    dest: /etc/fail2ban/jail.local
+
+  
 - name: Config | Disable root shell
   lineinfile:
     dest: /etc/passwd

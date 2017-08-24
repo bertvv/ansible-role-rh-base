@@ -92,10 +92,23 @@
   tags:
     - rhbase
     - install
-- name: Install | fail2ban (RedHat)
-  yum: name=fail2ban state=present enablerepo=epel
-  when: ansible_os_family == 'RedHat'
+    
+- name: Install | fail2ban
+  yum: 
+    name: fail2ban 
+    state: present
+    enablerepo: epel
+  notify:
+    - restart fail2ban
+    
+- name: Install | Install the latest version of yum
+  yum:
+    name: yum
+    state: latest
 
-- name: Install | fail2ban (Debian)
-  apt: name=fail2ban state=present
-  when: ansible_os_family == 'Debian'
+- name: Install | Install yum-cron
+  yum:
+    name: yum-cron
+    state: present
+  notify:
+    - restart yum-cron

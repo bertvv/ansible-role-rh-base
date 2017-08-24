@@ -28,6 +28,7 @@ rhbase_firewall_allow_ports: []
 rhbase_firewall_interfaces: []
 rhbase_selinux_state: enforcing
 rhbase_ssh_permit_root_login: "no"
+rhbase_ssh_password_authentication: "no"
 
 # Users
 rhbase_users: []
