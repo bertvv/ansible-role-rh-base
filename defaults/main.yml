@@ -21,6 +21,7 @@ rhbase_motd: false
 # Services
 rhbase_start_services: []
 rhbase_stop_services: []
+rhbase_enable_fail2ban: false
 
 # Security
 rhbase_firewall_allow_services: []

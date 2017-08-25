@@ -75,12 +75,16 @@
       line: "PermitRootLogin {{ rhbase_ssh_permit_root_login }}"
     - regexp: "^PasswordAuthentication"
       line: "PasswordAuthentication {{ rhbase_ssh_password_authentication }}"
+  tags:
+    - ssh
   notify: restart ssh
   
 - name: Config | Copy jail.conf to jail.local
   copy:
     src: /etc/fail2ban/jail.conf
     dest: /etc/fail2ban/jail.local
+  tags:
+    - fail2ban
 
   
 - name: Config | Disable root shell
@@ -89,5 +93,7 @@
     regexp: "^root:x:0:0:root:/root:/bin/bash"
     line: "root:x:0:0:root:/root:/sbin/nologin"
     state: present
+  tags:
+   -  disableroot
 
 

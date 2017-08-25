@@ -94,21 +94,27 @@
     - install
     
 - name: Install | fail2ban
-  yum: 
+  package: 
     name: fail2ban 
     state: present
     enablerepo: epel
+  tags:
+    - fail2ban
   notify:
     - restart fail2ban
     
 - name: Install | Install the latest version of yum
-  yum:
+  package:
     name: yum
     state: latest
+  tags:
+    - yuminstallation
 
 - name: Install | Install yum-cron
-  yum:
+  package:
     name: yum-cron
     state: present
+  tags:
+    - yumcron
   notify:
     - restart yum-cron

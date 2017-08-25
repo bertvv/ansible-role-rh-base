@@ -16,8 +16,7 @@
     enabled: true
     state: started
   tags:
-    - rhbase
-    - services
+    - fail2ban
  
 - name: Services | Ensure specified services are running
   service:
@@ -44,3 +43,5 @@
     name: yum-cron
     enabled: true
     state: started
+  tags:
+    - yumcron
