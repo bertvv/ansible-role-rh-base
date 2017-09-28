@@ -2,12 +2,17 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
-## 2.1.1 - 2017-09-28
+## 2.2.0 - 2017-09-28
+
+### Added
+
+- (GH-5) Variable `rhbase_tz` sets the TZ environment variable to save system calls
 
 ### Changed
 
 - Give keys of the `rhbase_users` variable default values. Only user name is required. See the <README.md> for details.
 - Upgrade base boxes to latest versions: CentOS 7.4 and Fedora 26
+- (GH-6) Ensure /var/log/journal/ exists so the system can keep persistent logs
 
 ## 2.1.0 - 2016-11-24
 
