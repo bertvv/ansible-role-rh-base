@@ -41,6 +41,7 @@
         groups:
           - juniors
         password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdTVAWyVeqVrWcdVMH9jztH2kTOsuCswKFpIijeR/c4QjM6g1ASHjDbeTrwcgEl4Rafk.'
+      - name: jane
     rhbase_repo_gpgcheck: false
     rhbase_repo_installonly_limit: 2
     rhbase_motd: true
