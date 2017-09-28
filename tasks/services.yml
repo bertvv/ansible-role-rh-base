@@ -10,6 +10,16 @@
     - rhbase
     - services
 
+- name: Services | Ensure `/var/log/journal` exists
+  file:
+    path: /var/log/journal
+    state: directory
+  notify:
+    - restart journald
+  tags:
+    - rhbase
+    - services
+
 - name: Services | Ensure specified services are running
   service:
     name: "{{ item }}"
