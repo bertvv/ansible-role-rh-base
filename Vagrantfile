@@ -4,13 +4,14 @@ VAGRANTFILE_API_VERSION = '2'
 ROLE_NAME = 'base'
 
 hosts = [
-  { maintainer: 'bertvv', distro: 'centos72', ip: '192.168.56.4' },
-  { maintainer: 'bertvv', distro: 'fedora24', ip: '192.168.56.5' }
+  { maintainer: 'bento', distro: 'centos-7.4', ip: '192.168.56.4' },
+  { maintainer: 'bento', distro: 'fedora-26', ip: '192.168.56.5' }
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   hosts.each do |host|
-    host_name = host[:distro] + '-' + ROLE_NAME
+    distro_name = host[:distro].delete('.-')
+    host_name = distro_name + '-' + ROLE_NAME
 
     config.vm.define host_name do |node|
       node.vm.box = host[:maintainer] + '/' + host[:distro]
