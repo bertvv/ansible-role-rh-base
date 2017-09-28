@@ -15,11 +15,10 @@
   user:
     name: "{{ item.name }}"
     state: present
-    comment: "{{ item.comment }}"
+    comment: "{{ item.comment|default('') }}"
     shell: "{{ item.shell|default('/bin/bash') }}"
-    createhome: yes
-    groups: "{{ ','.join(item.groups) }}"
-    password: "{{ item.password }}"
+    groups: "{{ ','.join(item.groups) if item.groups is defined else '' }}"
+    password: "{{ item.password|default('!!') }}"
   with_items: "{{ rhbase_users }}"
   tags:
     - rhbase
