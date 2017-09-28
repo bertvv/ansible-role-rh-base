@@ -17,6 +17,7 @@ rhbase_update: false
 rhbase_override_firewalld_zones: false
 rhbase_hosts_entry: false
 rhbase_motd: false
+rhbase_tz: :/etc/localtime
 
 # Services
 rhbase_start_services: []

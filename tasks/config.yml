@@ -64,3 +64,10 @@
     - rhbase
     - config
 
+- name: Config | Set the TZ environment variable
+  template:
+    src: etc_profile.d_localtime.j2
+    dest: /etc/profile.d/localtime.sh
+  tags:
+    - rhbase
+    - config
