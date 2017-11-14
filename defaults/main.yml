@@ -28,6 +28,7 @@ rhbase_firewall_allow_services: []
 rhbase_firewall_allow_ports: []
 rhbase_firewall_interfaces: []
 rhbase_selinux_state: enforcing
+rhbase_selinux_booleans: []
 
 # Users
 rhbase_users: []
