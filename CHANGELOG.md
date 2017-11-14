@@ -2,6 +2,17 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 2.2.1 - 2017-11-14
+
+### Added
+
+- (GH-8) Variable `rhbase_selinux_booleans` (credit: @SebaNuss)
+
+### Changed
+
+- (GH-7) Updated documentation for generating password hashes
+- Fix Ansible 2.4 deprecation warnings
+
 ## 2.2.0 - 2017-09-28
 
 ### Added
