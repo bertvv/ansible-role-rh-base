@@ -2,7 +2,7 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
-## 2.2.1 - 2017-11-14
+## 2.3.0 - 2017-11-14
 
 ### Added
 
