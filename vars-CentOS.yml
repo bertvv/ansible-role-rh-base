@@ -1,23 +1,27 @@
-# Fedora.yml
-# Variables specific for Fedora
+# Centos.yml
+# Variables specific for Centos
 ---
 
 rhbase_repositories:
-  - epel-release
+  - epel-release                        # Extra Packages for Enterprise Linux
 rhbase_enable_repos:
   - CentOS-fasttrack
+
 rhbase_install_packages:
-  - tree
-  - bash-completion
+  - tree                                # nice directory listing tool
+  - bash-completion                     # auto complete for bash
+  - vim                                 # text editor
+  - nmap                                # replacement for netstat
+
 rhbase_remove_packages:
-  - NetworkManager
-  - NetworkManager-glib
-  - NetworkManager-tui
-  - wpa_supplicant
+  - NetworkManager                      # manages network which we dont want on servers
+  - NetworkManager-glib                 # see network manager
+  - NetworkManager-tui                  # see network manager
+  - wpa_supplicant                      # WPA authenticator simular to network manager for wireless
 
 rhbase_repo_exclude_from_update:
-  - kernel*
-  - centos-release*
+  - kernel*                             # kernel update should not be automated for safety
+  - centos-release*                     # same as kernel
 
 rhbase_stop_services:
   - postfix
