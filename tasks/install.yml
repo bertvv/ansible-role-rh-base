@@ -92,3 +92,19 @@
   tags:
     - rhbase
     - install
+    
+- name: Install | Install yum-cron.
+  package:
+    name: yum-cron
+    state: present
+  tags:
+    - rhbase
+    - install
+
+- name: Install | Ensure yum-cron is running and enabled on boot.
+  service: 
+    name: yum-cron
+    state: started
+    enabled: yes
+  tags:
+    - rhbase
