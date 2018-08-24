@@ -1,0 +1,26 @@
+# roles/rhbase/tasks/yum-cron.yml
+#
+# Settings regarding yum-cron
+---
+- name: Yum-cron | Install yum-cron
+  yum:
+    name: yum-cron
+    state: present
+
+- name: Yum-cron | Install yum-cron configuration
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/yum/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - yum-cron.conf
+    - yum-cron-hourly.conf
+  notify: restart yum-cron
+
+- name: Yum-cron | Start yum-cron service
+  service:
+    name: yum-cron
+    state: started
+    enabled: yes

@@ -10,3 +10,9 @@
   service:
     name: firewalld
     state: restarted
+
+- name: restart yum-cron
+  service:
+    name: yum-cron
+    state: restarted
+

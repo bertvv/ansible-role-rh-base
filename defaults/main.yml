@@ -33,3 +33,21 @@ rhbase_selinux_booleans: []
 # Users
 rhbase_users: []
 rhbase_user_groups: []
+
+# Yum-cron
+rhbase_yum_cron_update_level: default
+rhbase_yum_cron_update_messages: yes
+rhbase_yum_cron_download_updates: yes
+rhbase_yum_cron_install_updates: yes
+rhbase_yum_cron_sleep_time: 360
+rhbase_yum_cron_system_name: "{{ ansible_hostname }}"
+rhbase_yum_cron_message_protocol: stdio
+rhbase_yum_cron_email_from: root@localhost
+rhbase_yum_cron_email_to: root
+rhbase_yum_cron_email_host: localhost
+rhbase_yum_cron_hourly_update_level: minimal
+rhbase_yum_cron_hourly_update_messages: yes
+rhbase_yum_cron_hourly_download_updates: yes
+rhbase_yum_cron_hourly_install_updates: no
+rhbase_yum_cron_hourly_sleep_time: 15
+rhbase_yum_cron_hourly_message_protocol: stdio
