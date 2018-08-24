@@ -44,7 +44,7 @@ No specific requirements
 | `rhbase_update`                           | false           | When set, a package update will be performed.                |
 | `rhbase_user_groups`                      | []              | List of user groups that should be present.                  |
 | `rhbase_users`                            | []              | List of dicts specifying users that should be present. See below for an example. |
-| `rhbase_automatic_updates`                | no              | Whether to enable automatic updates, if yes, this installs and configures yum-cron. |
+| `rhbase_automatic_updates`                | false           | Whether to enable automatic updates, if yes, this installs and configures yum-cron. |
 | `rhbase_yum_cron_update_level`            | default         | What kind of update to use on the daily cron (default, security, security-severity:Critical, minimal, ...). |
 | `rhbase_yum_cron_update_messages`         | yes             | Whether to display or send messages when the daily yum-cron has executed a task (yes/no). |
 | `rhbase_yum_cron_download_updates`        | yes             | Whether to download updates when available using the daily yum-cron (yes/no). |

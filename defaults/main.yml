@@ -35,7 +35,7 @@ rhbase_users: []
 rhbase_user_groups: []
 
 # Yum-cron
-rhbase_automatic_updates: no
+rhbase_automatic_updates: false
 rhbase_yum_cron_update_level: default
 rhbase_yum_cron_update_messages: yes
 rhbase_yum_cron_download_updates: yes

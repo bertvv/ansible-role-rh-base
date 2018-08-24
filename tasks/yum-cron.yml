@@ -6,7 +6,7 @@
   yum:
     name: yum-cron
     state: present
-  when: rhbase_automatic_updates == yes
+  when: rhbase_automatic_updates == true
 
 - name: Yum-cron | Install yum-cron configuration
   template:
@@ -19,11 +19,11 @@
     - yum-cron.conf
     - yum-cron-hourly.conf
   notify: restart yum-cron
-  when: rh_automatic_updates == yes
+  when: rhbase_automatic_updates == true
 
 - name: Yum-cron | Start yum-cron service
   service:
     name: yum-cron
     state: started
     enabled: yes
-  when: rh_automatic_updates == yes
+  when: rhbase_automatic_updates == true
