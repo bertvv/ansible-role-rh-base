@@ -130,3 +130,4 @@ BSD
 - Bert Van Vreckem (maintainer)
 - [Jeroen De Meerleer](https://github.com/JeroenED)
 - [Sebastien Nussbaum](https://github.com/SebaNuss)
+- [Tomas Dabašinskas](https://github.com/T0MASD)
