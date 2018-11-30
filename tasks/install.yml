@@ -92,18 +92,19 @@
   tags:
     - rhbase
     - install
-    
-- name: Install | Install yum-cron.
+
+- name: Install | Automatic updater 
   package:
-    name: yum-cron
-    state: present
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_package_manager_automatic_updates }}"
   tags:
     - rhbase
     - install
-
+    
 - name: Install | Ensure yum-cron is running and enabled on boot.
   service: 
-    name: yum-cron
+    name: "{{ rhbase_package_manager_automatic_updates }}"
     state: started
     enabled: yes
   tags:

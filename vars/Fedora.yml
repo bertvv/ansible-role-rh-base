@@ -14,3 +14,4 @@ rhbase_dependencies:
 rhbase_package_manager: dnf
 rhbase_package_manager_configuration: /etc/dnf/dnf.conf
 
+rhbase_package_manager_automatic_updates: dnf-automatic
