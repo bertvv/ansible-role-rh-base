@@ -33,3 +33,4 @@ rhbase_selinux_booleans: []
 # Users
 rhbase_users: []
 rhbase_user_groups: []
+rhbase_ssh_allow_groups: []
