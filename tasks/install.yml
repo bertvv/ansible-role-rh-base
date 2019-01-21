@@ -113,3 +113,31 @@
     path: /etc/profile
     line: '/etc/dymotd.sh'
   when: rhbase_dynmotd
+
+- name: Install | Automatic updates ({{ rhbase_package_manager_automatic_updates }})
+  package:
+    name: "{{ item }}"
+    state: installed
+  with_items: "{{ rhbase_package_manager_automatic_updates }}"
+  tags:
+    - rhbase
+    - install
+
+- name: Install | Configuration ({{ rhbase_package_manager_automatic_updates }})
+  template:
+    src: etc_{{ rhbase_package_manager }}_{{ rhbase_package_manager_automatic_updates }}.conf.j2
+    dest: "{{ rhbase_package_manager_automatic_updates_config }}"
+    owner: root
+    group: root
+    mode: 0644
+  tags:
+    - rhbase
+    - install    
+    
+- name: Install | Ensure yum-cron is running and enabled on boot.
+  service: 
+    name: "{{ rhbase_package_manager_automatic_updates }}"
+    state: started
+    enabled: yes
+  tags:
+    - rhbase

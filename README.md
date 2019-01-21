@@ -38,9 +38,10 @@ No specific requirements
 | `rhbase_selinux_booleans`         | []              | List of SELinux booleans to be set to on, e.g. httpd_can_network_connect                                              |
 | `rhbase_ssh_key`                  | -               | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
 | `rhbase_ssh_user`                 | -               | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.(3)  |
+| `rhbase_ssh_allow_groups`         | []              | List of groups allowed to ssh. When enabled, only users in these groups are allowed ssh access. (4)                   |
 | `rhbase_start_services`           | []              | List of services that should be running and enabled.                                                                  |
 | `rhbase_stop_services`            | []              | List of services that should **not** be running                                                                       |
-| `rhbase_tz`                       | :/etc/localtime | Sets the `$TZ` environment variable (4)                                                                               |
+| `rhbase_tz`                       | :/etc/localtime | Sets the `$TZ` environment variable (5)                                                                               |
 | `rhbase_update`                   | false           | When set, a package update will be performed.                                                                         |
 | `rhbase_user_groups`              | []              | List of user groups that should be present.                                                                           |
 | `rhbase_users`                    | []              | List of dicts specifying users that should be present. See below for an example.                                      |
@@ -53,7 +54,9 @@ No specific requirements
 
 (3) Setting the variable `rhbase_ssh_user` does not actually create a user, but installs the `rhbase_ssh_key` in that user's home directory (`~/.ssh/authorized_keys`). Consequently, `rhbase_ssh_user` should be the name of an existing user, specified in `rhbase_users`.
 
-(4) setting `$TZ` variable may reduce the number of system calls. See <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>
+(4) If you use this role with Vagrant and set the variable `rhbase_ssh_allow_groups`, you need to define the `vagrant` group in the list of `rhbase_ssh_allow_groups`.
+
+(5) Setting `$TZ` variable may reduce the number of system calls. See <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>
 
 ### Enabling repositories
 
@@ -132,3 +135,4 @@ BSD
 - [Jeroen De Meerleer](https://github.com/JeroenED)
 - [Sebastien Nussbaum](https://github.com/SebaNuss)
 - [Tim Caudron] (https://github.com/TimCaudron)
+- [Sven de Windt](https://github.com/svendewindt)
