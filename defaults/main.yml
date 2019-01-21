@@ -13,6 +13,15 @@ rhbase_repo_exclude_from_update: []
 rhbase_repositories: []
 rhbase_update: false
 
+rhbase_repo_update_type: default
+rhbase_repo_random_sleep: 360
+rhbase_repo_updates_download: yes
+rhbase_repo_updates_apply: no
+rhbase_repo_emit_via: stdio
+rhbase_repo_email_from: root@localhost  
+rhbase_repo_email_to: root 
+rhbase_repo_email_host: localhost
+
 # Configuration
 rhbase_override_firewalld_zones: false
 rhbase_hosts_entry: false
