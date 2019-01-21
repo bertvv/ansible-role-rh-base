@@ -24,3 +24,14 @@
     - rhbase
     - admin
 
+- name: Admin | Make sure only these groups can ssh
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^AllowGroups'
+    line: "AllowGroups={{ ' '.join(rhbase_ssh_allow_groups) }}"
+  notify: restart sshd
+  tags: 
+    - rhbase
+    - admin
