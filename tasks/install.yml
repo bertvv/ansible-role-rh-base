@@ -93,6 +93,27 @@
     - rhbase
     - install
 
+- name: Install | figlet for Dsitro Logo Font
+  yum:
+   name: "figlet"
+   state: present
+  when: rhbase_dynmotd
+
+- name: Copy | template dynMOTD
+  copy:
+   src: ../templates/MOTD-Script/dymotd.sh
+   dest: /etc/dymotd.sh
+   owner: root
+   group: root
+   mode: 0755
+  when: rhbase_dynmotd
+
+- name: Connect | template dynMoTD
+  lineinfile:
+    path: /etc/profile
+    line: '/etc/dymotd.sh'
+  when: rhbase_dynmotd
+
 - name: Install | Automatic updates ({{ rhbase_package_manager_automatic_updates }})
   package:
     name: "{{ item }}"
