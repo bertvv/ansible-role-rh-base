@@ -135,4 +135,5 @@ BSD
 - [Jeroen De Meerleer](https://github.com/JeroenED)
 - [Sebastien Nussbaum](https://github.com/SebaNuss)
 - [Tim Caudron] (https://github.com/TimCaudron)
+- [Tomas Dabašinskas](https://github.com/T0MASD)
 - [Sven de Windt](https://github.com/svendewindt)

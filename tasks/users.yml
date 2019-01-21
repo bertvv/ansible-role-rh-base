@@ -2,11 +2,19 @@
 #
 # Create groups and users on the system
 ---
+- name: Users | Process groups
+  set_fact:
+    rhbase_user_groups: "{{ rhbase_user_groups }} + {{ item.groups }}"
+  with_items: "{{ rhbase_users }}"
+  tags:
+    - rhbase
+    - users
+
 - name: Users | Add groups
   group:
     name: "{{ item }}"
     state: present
-  with_items: "{{ rhbase_user_groups }}"
+  with_items: "{{ rhbase_user_groups | unique }}"
   tags:
     - rhbase
     - users
