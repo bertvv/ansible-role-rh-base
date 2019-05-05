@@ -28,9 +28,8 @@
 
 - name: Install | Role/Ansible dependencies
   package:
-    name: "{{ item }}"
+    name: "{{ rhbase_dependencies }}"
     state: installed
-  with_items: "{{ rhbase_dependencies }}"
   tags:
     - rhbase
     - install
@@ -48,9 +47,8 @@
 
 - name: Install | Ensure specified external repositories are installed
   package:
-    name: "{{ item }}"
+    name: "{{ rhbase_repositories }}"
     state: installed
-  with_items: "{{ rhbase_repositories }}"
   tags:
     - rhbase
     - install
@@ -68,18 +66,16 @@
 
 - name: Install | Ensure specified packages are installed
   package:
-    name: "{{ item }}"
+    name: "{{ rhbase_install_packages }}"
     state: installed
-  with_items: "{{ rhbase_install_packages }}"
   tags:
     - rhbase
     - install
 
 - name: Install | Ensure specified packages are NOT installed
   package:
-    name: "{{ item }}"
+    name: "{{ rhbase_remove_packages }}"
     state: absent
-  with_items: "{{ rhbase_remove_packages }}"
   tags:
     - rhbase
     - install
@@ -92,27 +88,6 @@
   tags:
     - rhbase
     - install
-
-- name: Install | figlet for Dsitro Logo Font
-  yum:
-   name: "figlet"
-   state: present
-  when: rhbase_dynmotd
-
-- name: Copy | template dynMOTD
-  copy:
-   src: ../templates/MOTD-Script/dymotd.sh
-   dest: /etc/dymotd.sh
-   owner: root
-   group: root
-   mode: 0755
-  when: rhbase_dynmotd
-
-- name: Connect | template dynMoTD
-  lineinfile:
-    path: /etc/profile
-    line: '/etc/dymotd.sh'
-  when: rhbase_dynmotd
 
 - name: Install | Automatic updates ({{ rhbase_package_manager_automatic_updates }})
   package:
@@ -132,12 +107,12 @@
     mode: 0644
   tags:
     - rhbase
-    - install    
-    
+    - install
+
 - name: Install | Ensure yum-cron is running and enabled on boot.
-  service: 
+  service:
     name: "{{ rhbase_package_manager_automatic_updates }}"
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - rhbase

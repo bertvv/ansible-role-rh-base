@@ -15,11 +15,11 @@ rhbase_update: false
 
 rhbase_repo_update_type: default
 rhbase_repo_random_sleep: 360
-rhbase_repo_updates_download: yes
-rhbase_repo_updates_apply: no
+rhbase_repo_updates_download: true
+rhbase_repo_updates_apply: true
 rhbase_repo_emit_via: stdio
-rhbase_repo_email_from: root@localhost  
-rhbase_repo_email_to: root 
+rhbase_repo_email_from: root@localhost
+rhbase_repo_email_to: root
 rhbase_repo_email_host: localhost
 
 # Configuration
@@ -27,7 +27,7 @@ rhbase_override_firewalld_zones: false
 rhbase_hosts_entry: false
 rhbase_motd: false
 rhbase_tz: :/etc/localtime
-rhbase_dynmotd: false
+rhbase_dynamic_motd: false
 
 # Services
 rhbase_start_services: []

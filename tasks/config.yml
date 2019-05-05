@@ -14,14 +14,23 @@
     - rhbase
     - config
 
-- name: Config | Install custom `/etc/motd` file
-  template:
-    src: etc_motd
-    dest: /etc/motd
+- name: Config | Install dependency for dynamic MotD
+  package:
+    name: 'figlet'
+    state: present
+  when: rhbase_dynamic_motd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Install script generating dynamic MotD
+  copy:
+    src: dynamic-motd.sh
+    dest: /etc/profile.d/dynamic-motd.sh
     owner: root
     group: root
     mode: 0644
-  when: rhbase_motd == true
+  when: rhbase_dynamic_motd
   tags:
     - rhbase
     - config

@@ -24,8 +24,7 @@ No specific requirements
 | `rhbase_firewall_interfaces`      | []              | List of network interfaces to be added to the public zone of the firewall ruleset.                                    |
 | `rhbase_hosts_entry`              | true            | When set, an entry is added to `/etc/hosts` with the machine's host name. This speeds up gathering facts.             |
 | `rhbase_install_packages`         | []              | List of packages that should be installed. URLs are also allowed.                                                     |
-| `rhbase_motd`                     | false           | When set, a custom `/etc/motd` is installed with info about the host name and IP addresses.                           |
-| `rhbase_dynmotd`                     | false           | When set, a script has been activated that provide you a dynamic message of the day at logintime with the actual IP addresses, up and running time, some info about the linux distro you are using, user information,etc                           |
+| `rhbase_dynamic_motd`             | false           | When set, provides a dynamic message of the day at login with system information                                      |
 | `rhbase_override_firewalld_zones` | false           | When set, allows NetworkManager to override firewall zones set by the administrator(2).                               |
 | `rhbase_remove_packages`          | []              | List of packages that should **not** be installed                                                                     |
 | `rhbase_repo_exclude_from_update` | []              | List of packages to be excluded from an update. Wildcards allowed, e.g. `kernel*`.                                    |
