@@ -3,14 +3,16 @@
 # Settings regarding yum-cron
 ---
 - name: Yum-cron | Install yum-cron
-  yum:
+  package:
     name: yum-cron
     state: present
-  when: rhbase_automatic_updates
+  tags:
+    - rhbase
+    - yumcron
 
 - name: Yum-cron | Install yum-cron configuration
   template:
-    src: "{{ item }}.j2"
+    src: "etc_yum_{{ item }}.j2"
     dest: "/etc/yum/{{ item }}"
     owner: root
     group: root
@@ -19,11 +21,15 @@
     - yum-cron.conf
     - yum-cron-hourly.conf
   notify: restart yum-cron
-  when: rhbase_automatic_updates
+  tags:
+    - rhbase
+    - yumcron
 
 - name: Yum-cron | Start yum-cron service
   service:
     name: yum-cron
     state: started
     enabled: true
-  when: rhbase_automatic_updates
+  tags:
+    - rhbase
+    - yumcron

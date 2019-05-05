@@ -10,16 +10,16 @@
 update_cmd = {{ rhbase_yum_cron_hourly_update_level }}
 
 # Whether a message should emitted when updates are available.
-update_messages = {{ rhbase_yum_cron_hourly_update_messages }}
+update_messages = {{ 'yes' if rhbase_yum_cron_hourly_update_messages else 'no' }}
 
 # Whether updates should be downloaded when they are available. Note
 # that updates_messages must also be yes for updates to be downloaded.
-download_updates = {{ rhbase_yum_cron_hourly_download_updates }}
+download_updates = {{ 'yes' if rhbase_yum_cron_hourly_download_updates else 'no' }}
 
 # Whether updates should be applied when they are available.  Note
 # that both update_messages and download_updates must also be yes for
 # the update to be applied
-apply_updates = {{ rhbase_yum_cron_hourly_install_updates }}
+apply_updates = {{ 'yes' if rhbase_yum_cron_hourly_install_updates else 'no' }}
 
 # Maximum amout of time to randomly sleep, in minutes.  The program
 # will sleep for a random amount of time between 0 and random_sleep
@@ -27,7 +27,6 @@ apply_updates = {{ rhbase_yum_cron_hourly_install_updates }}
 # times that multiple systems will access update servers.  If
 # random_sleep is 0 or negative, the program will run immediately.
 random_sleep = {{ rhbase_yum_cron_hourly_sleep_time }}
-
 
 [emitters]
 # Name to use for this system in messages that are emitted.  If
@@ -45,7 +44,6 @@ emit_via = {{ rhbase_yum_cron_hourly_message_protocol }}
 # formatted to.
 output_width = 80
 
-
 [email]
 # The address to send email messages from.
 # NOTE: 'localhost' will be replaced with the value of system_name.
@@ -57,7 +55,6 @@ email_to = {{ rhbase_yum_cron_email_to }}
 # Name of the host to connect to to send email messages.
 email_host = {{ rhbase_yum_cron_email_host }}
 
-
 [groups]
 # List of groups to update
 group_list = None
@@ -66,7 +63,6 @@ group_list = None
 group_package_types = mandatory, default
 
 [base]
-# This section overrides yum.conf
 
 # Use this to filter Yum core messages
 # -4: critical
@@ -76,6 +72,3 @@ debuglevel = -2
 
 # skip_broken = True
 mdpolicy = group:main
-
-# Uncomment to auto-import new gpg keys (dangerous)
-# assumeyes = True

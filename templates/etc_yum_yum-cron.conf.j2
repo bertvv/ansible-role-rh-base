@@ -13,11 +13,11 @@ update_cmd = {{ rhbase_repo_update_type }}
 update_messages = yes
 
 # Whether updates should be downloaded when they are available.
-download_updates = {{ rhbase_repo_updates_download }}
+download_updates = {{ 'yes' if rhbase_repo_updates_download else 'no' }}
 
 # Whether updates should be applied when they are available.  Note
 # that download_updates must also be yes for the update to be applied.
-apply_updates = {{ rhbase_repo_updates_apply }}
+apply_updates = {{ 'yes' if rhbase_repo_updates_apply else 'no' }}
 
 # Maximum amout of time to randomly sleep, in minutes.  The program
 # will sleep for a random amount of time between 0 and random_sleep
@@ -26,7 +26,6 @@ apply_updates = {{ rhbase_repo_updates_apply }}
 # random_sleep is 0 or negative, the program will run immediately.
 # 6*60 = 360
 random_sleep = {{ rhbase_repo_random_sleep }}
-
 
 [emitters]
 # Name to use for this system in messages that are emitted.  If
@@ -44,7 +43,6 @@ emit_via = {{ rhbase_repo_emit_via }}
 # formatted to.
 output_width = 80
 
-
 [email]
 # The address to send email messages from.
 # NOTE: 'localhost' will be replaced with the value of system_name.
@@ -55,7 +53,6 @@ email_to = {{ rhbase_repo_email_to }}
 
 # Name of the host to connect to to send email messages.
 email_host = {{ rhbase_repo_email_host }}
-
 
 [groups]
 # NOTE: This only works when group_command != objects, which is now the default
@@ -74,8 +71,5 @@ group_package_types = mandatory, default
 # -2: critical+errors+warnings (default)
 debuglevel = -2
 
-# skip_broken = True
 mdpolicy = group:main
 
-# Uncomment to auto-import new gpg keys (dangerous)
-# assumeyes = True
