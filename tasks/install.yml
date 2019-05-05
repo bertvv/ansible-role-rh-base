@@ -6,7 +6,9 @@
 ---
 - name: Install | Check minimal value of ‘rhbase_repo_installonly_limit’ (>= 2)
   debug:
-    msg: "The value of ‘rhbase_repo_installonly_limit’ should be at least 2, actual value is {{ rhbase_repo_installonly_limit }}."
+    msg: >-
+      The value of ‘rhbase_repo_installonly_limit’ should be at least 2,
+      actual value is {{ rhbase_repo_installonly_limit }}.
   failed_when: rhbase_repo_installonly_limit < 2
   tags:
     - rhbase

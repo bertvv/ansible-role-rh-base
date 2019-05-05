@@ -13,8 +13,8 @@
 - name: Security | Enable SELinux booleans
   seboolean:
     name: "{{ item }}"
-    state: yes
-    persistent: yes
+    state: true
+    persistent: true
   with_items: "{{ rhbase_selinux_booleans }}"
   tags:
     - rhbase
@@ -24,7 +24,7 @@
   service:
     name: firewalld
     state: started
-    enabled: yes
+    enabled: true
   tags:
     - rhbase
     - security

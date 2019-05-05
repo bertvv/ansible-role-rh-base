@@ -6,7 +6,7 @@
   lineinfile:
     dest: /etc/sudoers.d/wheel
     state: present
-    create: yes
+    create: true
     regexp: '^%wheel'
     line: '%wheel ALL=(ALL) ALL'
     validate: 'visudo -cf %s'
@@ -28,10 +28,10 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^AllowGroups'
     line: "AllowGroups={{ ' '.join(rhbase_ssh_allow_groups) }}"
   notify: restart sshd
-  tags: 
+  tags:
     - rhbase
     - admin

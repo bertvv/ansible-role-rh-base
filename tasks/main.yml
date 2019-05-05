@@ -7,11 +7,10 @@
     - "{{ ansible_os_family }}.yml"
   tags: rhbase
 
-- include_tasks: install.yml  # Install repositories and packages
-- include_tasks: config.yml   # Configuration (/etc/)
-- include_tasks: services.yml # Start/stop basic services
-- include_tasks: security.yml # Security settings
-- include_tasks: users.yml    # Create users
-- include_tasks: admin.yml    # Admin user (a.o. SSH key)
-- include_tasks: yum-cron.yml # Automatic updates
-
+- include_tasks: install.yml   # Install repositories and packages
+- include_tasks: config.yml    # Configuration (/etc/)
+- include_tasks: services.yml  # Start/stop basic services
+- include_tasks: security.yml  # Security settings
+- include_tasks: users.yml     # Create users
+- include_tasks: admin.yml     # Admin user (a.o. SSH key)
+- include_tasks: yum-cron.yml  # Automatic updates
