@@ -4,7 +4,7 @@
 ---
 - name: Users | Process groups
   set_fact:
-    rhbase_user_groups: "{{ rhbase_user_groups }} + {{ item.groups }}"
+    rhbase_user_groups: "{{ rhbase_user_groups }} + {{ item.groups|default([]) }}"
   with_items: "{{ rhbase_users }}"
   tags:
     - rhbase
@@ -25,7 +25,7 @@
     state: present
     comment: "{{ item.comment|default('') }}"
     shell: "{{ item.shell|default('/bin/bash') }}"
-    groups: "{{ ','.join(item.groups) if item.groups is defined else '' }}"
+    groups: "{{ ','.join(item.groups) if item.groups is defined else [] }}"
     password: "{{ item.password|default('!!') }}"
   with_items: "{{ rhbase_users }}"
   tags:
