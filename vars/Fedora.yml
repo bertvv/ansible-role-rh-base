@@ -6,13 +6,13 @@ rhbase_systemd_services:
   - systemd-tmpfiles-setup.service
 
 rhbase_dependencies:
-  - libselinux-python
-  - libsemanage-python
   - firewalld
   - python3-firewall
+  - python3-libsemanage
 
 rhbase_package_manager: dnf
 rhbase_package_manager_configuration: /etc/dnf/dnf.conf
 
-rhbase_package_manager_automatic_updates: dnf-automatic
-rhbase_package_manager_automatic_updates_config: /etc/dnf/automatic.conf
+rhbase_updates_service: dnf-automatic
+rhbase_updates_config:
+  - automatic.conf

@@ -11,9 +11,9 @@
     name: firewalld
     state: restarted
 
-- name: restart yum-cron
+- name: restart updates
   service:
-    name: yum-cron
+    name: "{{ rhbase_updates_service }}"
     state: restarted
 
 - name: restart sshd

@@ -13,5 +13,7 @@ rhbase_dependencies:
 rhbase_package_manager: yum
 rhbase_package_manager_configuration: /etc/yum.conf
 
-rhbase_package_manager_automatic_updates: yum-cron
-rhbase_package_manager_automatic_updates_config: /etc/yum/yum-cron.conf
+rhbase_updates_service: yum-cron
+rhbase_updates_config:
+  - yum-cron.conf
+  - yum-cron-hourly.conf

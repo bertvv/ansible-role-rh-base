@@ -13,5 +13,5 @@
 - include_tasks: security.yml  # Security settings
 - include_tasks: users.yml     # Create users
 - include_tasks: admin.yml     # Admin user (a.o. SSH key)
-- include_tasks: yum-cron.yml  # Automatic updates
+- include_tasks: auto-updates.yml  # Automatic updates
   when: rhbase_automatic_updates
