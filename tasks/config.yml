@@ -80,3 +80,16 @@
   tags:
     - rhbase
     - config
+
+# Configure protocol version for SSH
+- name: Config | Set protocol version for SSH
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^Protocol'
+    line: "Protocol {{rhbase_ssh_protocol}}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
