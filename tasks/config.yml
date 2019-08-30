@@ -88,7 +88,7 @@
     state: present
     create: yes
     regexp: '^Protocol'
-    line: "Protocol {{rhbase_ssh_protocol}}"
+    line: "Protocol {{rhbase_ssh_protocol_version}}"
   notify: restart sshd
   tags:
     - rhbase
