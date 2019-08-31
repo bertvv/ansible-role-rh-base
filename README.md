@@ -39,10 +39,11 @@ No specific requirements
 | `rhbase_selinux_state`                    | enforcing       | The default SELinux state for the system. Just [leave this as is](http://stopdisablingselinux.com/).                  |
 | `rhbase_ssh_allow_groups`                 | []              | List of groups allowed to ssh. When enabled, only users in these groups are allowed ssh access. (4)                   |
 | `rhbase_ssh_ignorerhosts`                 | 'yes'           | Specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication.      |
-| `rhbase_ssh_hostbasedauthentication`      | 'no'            | Controls host based authentication.                                                                                   |
+| `rhbase_ssh_hostbasedauthentication`      | 'no'            | Wheter to allow host based authentication.                                                                            |
 | `rhbase_ssh_key`                          | -               | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
-| `rhbase_ssh_permitemptypasswords`         | 'no'            | Disallows empty passwords to logon.                                                                                   |
+| `rhbase_ssh_permitemptypasswords`         | 'no'            | Wheter to allow empty passwords to logon.                                                                             |
 | `rhbase_ssh_protocol_version`             | 2               | Sets the SSH protocol version.                                                                                        |
+| `rhbase_ssh_rhostsrsaauthentication`      | 'no'            | Wheter to allow rhosts RSA authentication                                                                             |
 | `rhbase_ssh_user`                         | -               | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.(3)  |
 | `rhbase_start_services`                   | []              | List of services that should be running and enabled.                                                                  |
 | `rhbase_stop_services`                    | []              | List of services that should **not** be running                                                                       |

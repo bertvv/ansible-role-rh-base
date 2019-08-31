@@ -131,3 +131,16 @@
   tags:
     - rhbase
     - config
+
+- name: Config | Set RhostsRSAAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^RhostsRSAAuthentication'
+    insertafter: '^#RhostsRSAAuthentication'
+    line: "RhostsRSAAuthentication {{ rhbase_ssh_rhostsrsaauthentication }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
