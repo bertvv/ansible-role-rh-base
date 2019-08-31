@@ -105,3 +105,16 @@
   tags:
     - rhbase
     - config
+
+- name: Config | Set IgnoreRhosts
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^IgnoreRhosts'
+    insertafter: '^#IgnoreRhosts'
+    line: "IgnoreRhosts {{ rhbase_ssh_ignorerhosts }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
