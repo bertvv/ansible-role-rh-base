@@ -81,7 +81,6 @@
     - rhbase
     - config
 
-# Configure protocol version for SSH
 - name: Config | Set protocol version for SSH
   lineinfile:
     dest: /etc/ssh/sshd_config
@@ -89,6 +88,19 @@
     create: yes
     regexp: '^Protocol'
     line: "Protocol {{rhbase_ssh_protocol_version}}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Set PermitEmptyPasswords
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^PermitEmptyPasswords'
+    insertafter: '^#PermitEmptyPasswords'
+    line: "PermitEmptyPasswords {{ rhbase_ssh_permitemptypasswords }}"
   notify: restart sshd
   tags:
     - rhbase
