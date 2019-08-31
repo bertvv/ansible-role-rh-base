@@ -28,6 +28,7 @@ rhbase_hosts_entry: false
 rhbase_motd: false
 rhbase_tz: :/etc/localtime
 rhbase_dynamic_motd: false
+rhbase_ssh_hostbasedauthentication: 'no'
 rhbase_ssh_ignorerhosts: 'yes'
 rhbase_ssh_permitemptypasswords: 'no'
 rhbase_ssh_protocol_version: 2

@@ -118,3 +118,16 @@
   tags:
     - rhbase
     - config
+
+- name: Config | Set HostbasedAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^HostbasedAuthentication'
+    insertafter: '^#HostbasedAuthentication'
+    line: "HostbasedAuthentication {{ rhbase_ssh_hostbasedauthentication }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
