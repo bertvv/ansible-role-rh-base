@@ -80,3 +80,67 @@
   tags:
     - rhbase
     - config
+
+- name: Config | Set protocol version for SSH
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^Protocol'
+    line: "Protocol {{rhbase_ssh_protocol_version}}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Set PermitEmptyPasswords
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^PermitEmptyPasswords'
+    insertafter: '^#PermitEmptyPasswords'
+    line: "PermitEmptyPasswords {{ rhbase_ssh_permitemptypasswords }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Set IgnoreRhosts
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^IgnoreRhosts'
+    insertafter: '^#IgnoreRhosts'
+    line: "IgnoreRhosts {{ rhbase_ssh_ignorerhosts }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Set HostbasedAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^HostbasedAuthentication'
+    insertafter: '^#HostbasedAuthentication'
+    line: "HostbasedAuthentication {{ rhbase_ssh_hostbasedauthentication }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
+
+- name: Config | Set RhostsRSAAuthentication
+  lineinfile:
+    dest: /etc/ssh/sshd_config
+    state: present
+    create: yes
+    regexp: '^RhostsRSAAuthentication'
+    insertafter: '^#RhostsRSAAuthentication'
+    line: "RhostsRSAAuthentication {{ rhbase_ssh_rhostsrsaauthentication }}"
+  notify: restart sshd
+  tags:
+    - rhbase
+    - config
