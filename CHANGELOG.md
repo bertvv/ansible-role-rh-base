@@ -2,6 +2,24 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 3.0.0 - 2019-10-10
+
+### Added
+
+- (GH-12) Dynamic Message of the Day (credit: @TimCaudron)
+- (GH-11, GH-13) Support for automatic updates (credit: @BrechtClaeys and @JensVanDeynse1994)
+- (GH-16) Set AllowGroups in sshd config
+
+### Changed
+
+- (GH-10) Update vars-CentOS.yml (credit: @MichaelLeeHobbs)
+- (GH-14) Ensure all groups specified in `rhbase_users` exist, even if not added to `rhbase_groups` (credit: @T0MASD)
+- Set SELinux booleans when appropriate, i.e. when SELinux state is either permissive or enforcing.
+
+### Removed
+
+- `rhbase_motd`, superseded by `rhbase_dynamic_motd`. **Breaking change***: old playbooks will still work, but the role's behaviour is changed (no custom MOTD will be generated).
+
 ## 2.3.0 - 2017-11-14
 
 ### Added
