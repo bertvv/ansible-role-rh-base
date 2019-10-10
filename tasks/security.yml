@@ -2,7 +2,7 @@
 #
 # Basic security settings
 ---
-- name: Security | Make sure SELinux is Enforcing
+- name: Security | Make sure SELinux has the desired state ({{ rhbase_selinux_state }})
   selinux:
     policy: targeted
     state: "{{ rhbase_selinux_state }}"
@@ -16,6 +16,7 @@
     state: true
     persistent: true
   with_items: "{{ rhbase_selinux_booleans }}"
+  when: rhbase_selinux_state is 'enforcing' or rhbase_selinux_state is 'permissive'
   tags:
     - rhbase
     - security
