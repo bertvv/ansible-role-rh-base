@@ -7,3 +7,6 @@ clean_requirements_on_remove={% if rhbase_repo_remove_dependencies %}1{% else %}
 {% if rhbase_repo_exclude_from_update|length != 0 %}
 exclude={% for item in rhbase_repo_exclude_from_update %}{{ item }} {%endfor %}
 {% endif %}
+
+{%- vim: ft=dosini
+-%}
