@@ -1,3 +1,4 @@
+# Yum-cron hourly task configuration
 # {{ ansible_managed }}
 [commands]
 #  What kind of update to use:
@@ -29,46 +30,21 @@ apply_updates = {{ 'yes' if rhbase_yum_cron_hourly_install_updates else 'no' }}
 random_sleep = {{ rhbase_yum_cron_hourly_sleep_time }}
 
 [emitters]
-# Name to use for this system in messages that are emitted.  If
-# system_name is None, the hostname will be used.
-system_name = {{ rhbase_yum_cron_system_name }}
-
-# How to send messages.  Valid options are stdio and email.  If
-# emit_via includes stdio, messages will be sent to stdout; this is useful
-# to have cron send the messages.  If emit_via includes email, this
-# program will send email itself according to the configured options.
-# If emit_via is None or left blank, no messages will be sent.
-emit_via = {{ rhbase_yum_cron_hourly_message_protocol }}
-
-# The width, in characters, that messages that are emitted should be
-# formatted to.
+system_name = {{ ansible_hostname }}
+emit_via = {{ rhbase_updates_emit_via }}
 output_width = 80
 
 [email]
-# The address to send email messages from.
-# NOTE: 'localhost' will be replaced with the value of system_name.
-email_from = {{ rhbase_yum_cron_email_from }}
-
-# List of addresses to send messages to.
-email_to = {{ rhbase_yum_cron_email_to }}
-
-# Name of the host to connect to to send email messages.
-email_host = {{ rhbase_yum_cron_email_host }}
+email_from = {{ rhbase_updates_email_from }}
+email_to = {{ rhbase_updates_email_to }}
+email_host = {{ rhbase_updates_email_host }}
 
 [groups]
-# List of groups to update
 group_list = None
-
-# The types of group packages to install
 group_package_types = mandatory, default
 
 [base]
+debuglevel = -{{ rhbase_updates_debuglevel }}
+mdpolicy = group:main
 
 ## vim: ft=dosini
-# -4: critical
-# -3: critical+errors
-# -2: critical+errors+warnings (default)
-debuglevel = -2
-
-# skip_broken = True
-mdpolicy = group:main
