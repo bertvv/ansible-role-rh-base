@@ -2,9 +2,9 @@
 #
 # Settings regarding yum-cron
 ---
-- name: Updates | Install automatic updates service ({{ rhbase_automatic_updates_service }})
+- name: Updates | Install automatic updates service ({{ rhbase_updates_service }})
   package:
-    name: "{{ rhbase_updates_service }}"
+    name: "{{ rhbase_updates_packages }}"
     state: present
   tags:
     - rhbase

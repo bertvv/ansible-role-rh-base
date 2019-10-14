@@ -13,6 +13,8 @@ rhbase_dependencies:
 rhbase_package_manager: dnf
 rhbase_package_manager_configuration: /etc/dnf/dnf.conf
 
-rhbase_updates_service: dnf-automatic
+rhbase_updates_packages:
+  - dnf-automatic
+rhbase_updates_service: dnf-automatic.timer
 rhbase_updates_config:
   - automatic.conf
