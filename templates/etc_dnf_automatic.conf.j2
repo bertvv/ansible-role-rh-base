@@ -3,9 +3,8 @@
 [commands]
 upgrade_type = {{ rhbase_updates_type }}
 random_sleep = {{ rhbase_updates_random_sleep }}
-download_updates = {{ 'yes' if rhbase_updates_download else 'no' }}
-apply_updates = {{ 'yes' if rhbase_updates_apply else 'no' }}
-update_messages = {{ 'yes' if rhbase_updates_message else 'no' }}
+download_updates = {{ rhbase_updates_download }}
+apply_updates = {{ rhbase_updates_apply }}
 
 [emitters]
 system_name = {{ ansible_hostname }}
