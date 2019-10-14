@@ -15,6 +15,7 @@ This file contains al notable changes to the bertvv.rh-base Ansible role. This f
 - (GH-10) Update vars-CentOS.yml (credit: @MichaelLeeHobbs)
 - (GH-14) Ensure all groups specified in `rhbase_users` exist, even if not added to `rhbase_groups` (credit: @T0MASD)
 - Set SELinux booleans when appropriate, i.e. when SELinux state is either permissive or enforcing.
+- Fix coding style using Yamllint
 
 ### Removed
 
