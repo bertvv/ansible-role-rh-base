@@ -16,7 +16,7 @@
     state: true
     persistent: true
   with_items: "{{ rhbase_selinux_booleans }}"
-  when: rhbase_selinux_state is 'enforcing' or rhbase_selinux_state is 'permissive'
+  when: rhbase_selinux_state == 'enforcing' or rhbase_selinux_state == 'permissive'
   tags:
     - rhbase
     - security
