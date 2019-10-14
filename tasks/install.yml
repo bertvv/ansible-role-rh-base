@@ -38,7 +38,7 @@
 
 - name: Install | Package management configuration ({{ rhbase_package_manager }})
   template:
-    src: etc_{{ rhbase_package_manager }}.conf.j2
+    src: "etc_{{ rhbase_package_manager }}.conf.j2"
     dest: "{{ rhbase_package_manager_configuration }}"
     owner: root
     group: root
