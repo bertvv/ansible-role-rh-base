@@ -13,16 +13,26 @@ rhbase_repo_exclude_from_update: []
 rhbase_repositories: []
 rhbase_update: false
 
+# Automatic updates
+rhbase_automatic_updates: false
+
 rhbase_updates_type: default
 rhbase_updates_random_sleep: 360
 rhbase_updates_download: true
 rhbase_updates_apply: true
 rhbase_updates_message: true
 rhbase_updates_emit_via: stdio
-rhbase_updates_email_from: root@localhost
+rhbase_updates_email_from: root
 rhbase_updates_email_to: root
 rhbase_updates_email_host: localhost
 rhbase_updates_debuglevel: 0
+
+# Yum-cron
+rhbase_yum_cron_hourly_sleep_time: 15
+rhbase_yum_cron_hourly_update_level: minimal
+rhbase_yum_cron_hourly_update_messages: true
+rhbase_yum_cron_hourly_download_updates: true
+rhbase_yum_cron_hourly_install_updates: false
 
 # Configuration
 rhbase_override_firewalld_zones: false
@@ -51,22 +61,3 @@ rhbase_selinux_booleans: []
 rhbase_users: []
 rhbase_user_groups: []
 rhbase_ssh_allow_groups: []
-
-# Yum-cron
-rhbase_automatic_updates: false
-rhbase_yum_cron_update_level: default
-rhbase_yum_cron_update_messages: true
-rhbase_yum_cron_download_updates: true
-rhbase_yum_cron_install_updates: true
-rhbase_yum_cron_sleep_time: 360
-rhbase_yum_cron_system_name: "{{ ansible_hostname }}"
-rhbase_yum_cron_message_protocol: stdio
-rhbase_yum_cron_email_from: root@localhost
-rhbase_yum_cron_email_to: root
-rhbase_yum_cron_email_host: localhost
-rhbase_yum_cron_hourly_update_level: minimal
-rhbase_yum_cron_hourly_update_messages: true
-rhbase_yum_cron_hourly_download_updates: true
-rhbase_yum_cron_hourly_install_updates: false
-rhbase_yum_cron_hourly_sleep_time: 15
-rhbase_yum_cron_hourly_message_protocol: stdio
