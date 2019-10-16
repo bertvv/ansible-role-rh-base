@@ -18,8 +18,8 @@ No specific requirements
 ## Role Variables
 
 | Variable                                  | Default         | Comment                                                                                                               |
-| :---                                      | :---            | :---                                                                                                                  |
-| `rhbase_automatic_updates`                | false           | Whether to enable automatic updates, if true, this installs and configures yum-cron.                                  |
+|:------------------------------------------|:----------------|:----------------------------------------------------------------------------------------------------------------------|
+| `rhbase_automatic_updates`                | false           | When set, automatic updates will be configured (yum-cron or dnf-automatic, as appropriate). See `rhbase_updates_*`    |
 | `rhbase_dynamic_motd`                     | false           | When set, provides a dynamic message of the day at login with system information                                      |
 | `rhbase_enable_repos`                     | []              | List of dicts specifying repositories to be enabled. See below for details.                                           |
 | `rhbase_firewall_allow_ports`             | []              | List of ports to be allowed to pass through the firewall, e.g. 80/tcp, 53/udp, etc.                                   |
@@ -38,8 +38,8 @@ No specific requirements
 | `rhbase_selinux_booleans`                 | []              | List of SELinux booleans to be set to on, e.g. httpd_can_network_connect                                              |
 | `rhbase_selinux_state`                    | enforcing       | The default SELinux state for the system. Just [leave this as is](http://stopdisablingselinux.com/).                  |
 | `rhbase_ssh_allow_groups`                 | []              | List of groups allowed to ssh. When enabled, only users in these groups are allowed ssh access. (4)                   |
-| `rhbase_ssh_ignorerhosts`                 | 'yes'           | Specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication.      |
 | `rhbase_ssh_hostbasedauthentication`      | 'no'            | Wheter to allow host based authentication.                                                                            |
+| `rhbase_ssh_ignorerhosts`                 | 'yes'           | Specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication.      |
 | `rhbase_ssh_key`                          | -               | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
 | `rhbase_ssh_permitemptypasswords`         | 'no'            | Wheter to allow empty passwords to logon.                                                                             |
 | `rhbase_ssh_protocol_version`             | 2               | Sets the SSH protocol version.                                                                                        |
@@ -48,25 +48,24 @@ No specific requirements
 | `rhbase_start_services`                   | []              | List of services that should be running and enabled.                                                                  |
 | `rhbase_stop_services`                    | []              | List of services that should **not** be running                                                                       |
 | `rhbase_tz`                               | :/etc/localtime | Sets the `$TZ` environment variable (5)                                                                               |
-| `rhbase_update`                           | false           | When set, a package update will be performed.                                                                         |
+| `rhbase_update`                           | false           | When set, a package update will be performed after installation.                                                      |
+| `rhbase_updates_apply`                    | true            | When set, automatic updates will actually install updates.                                                            |
+| `rhbase_updates_debuglevel`               | 0               | Integer denoting the level of verbosity of debug messages.                                                            |
+| `rhbase_updates_download`                 | true            | When set, automatic updates will download                                                                             |
+| `rhbase_updates_email_from`               | root            | From: Email address used for messages regarding automatic updates                                                     |
+| `rhbase_updates_email_host`               | localhost       | Host name used for email messages regarding automatic updates                                                         |
+| `rhbase_updates_email_to`                 | root            | To: Email address used for messages regarding automatic updates                                                       |
+| `rhbase_updates_emit_via`                 | stdio           | Emitter to report results of automatic updates through (either `stdio`, `email`, `motd`, or a comma separated list)   |
+| `rhbase_updates_message`                  | true            | Whether a message should be emitted when updates are available, were downloaded, or applied (yum-cron)                |
+| `rhbase_updates_random_sleep`             | 360             | Maximum random delay in seconds betfore downloading.                                                                  |
+| `rhbase_updates_type`                     | default         | Type of updates (default, security; yum-cron has more options, e.g. minimal)                                          |
 | `rhbase_user_groups`                      | []              | List of user groups that should be present.                                                                           |
 | `rhbase_users`                            | []              | List of dicts specifying users that should be present. See below for an example.                                      |
-| `rhbase_yum_cron_download_updates`        | yes             | Whether to download updates when available using the daily yum-cron (yes/no).                                         |
-| `rhbase_yum_cron_email_from`              | root@localhost  | The address to send email messages from.                                                                              |
-| `rhbase_yum_cron_email_host`              | localhost       | The host to connect with to send email messages.                                                                      |
-| `rhbase_yum_cron_email_to`                | root            | The address to send email messages to.                                                                                |
-| `rhbase_yum_cron_hourly_download_updates` | yes             | Whether to download updates when available using the hourly yum-cron (yes/no).                                        |
-| `rhbase_yum_cron_hourly_install_updates`  | no              | Whether to install updates when available using the hourly yum-cron (yes/no)                                          |
-| `rhbase_yum_cron_hourly_message_protocol` | stdio           | Way to send messages when messages are available in the hourly yum-cron (stdio/email).                                |
+| `rhbase_yum_cron_hourly_download_updates` | true            | Whether to download updates when available using the hourly yum-cron.                                                 |
+| `rhbase_yum_cron_hourly_install_updates`  | false           | Whether to install updates when available using the hourly yum-cron.                                                  |
 | `rhbase_yum_cron_hourly_sleep_time`       | 15              | Maximum of amount of random sleep for the hourly yum-cron in minutes.                                                 |
 | `rhbase_yum_cron_hourly_update_level`     | minimal         | What kind of update to use on the hourly cron (default, security, security-severity:Critical, minimal, ...).          |
-| `rhbase_yum_cron_hourly_update_messages`  | yes             | Whether to display or send messages when the hourly yum-cron has executed a task (yes/no).                            |
-| `rhbase_yum_cron_install_updates`         | yes             | Whether to install updates when available using the daily yum-cron (yes/no).                                          |
-| `rhbase_yum_cron_message_protocol`        | stdio           | Way to send messages when messages are available in the daily yum-cron (stdio/email).                                 |
-| `rhbase_yum_cron_sleep_time`              | 360             | Maximum of amount of random sleep for the daily yum-cron in minutes.                                                  |
-| `rhbase_yum_cron_system_name`             | hostname        | Name to use for this system when emitting messages.                                                                   |
-| `rhbase_yum_cron_update_level`            | default         | What kind of update to use on the daily cron (default, security, security-severity:Critical, minimal, ...).           |
-| `rhbase_yum_cron_update_messages`         | yes             | Whether to display or send messages when the daily yum-cron has executed a task (yes/no).                             |
+| `rhbase_yum_cron_hourly_update_messages`  | true            | Whether to display or send messages when the hourly yum-cron has executed a task.                                     |
 
 **Remarks:**
 
@@ -110,13 +109,13 @@ rhbase_users:
 
 The only mandatory key is `name`.
 
-| Key        | Required | Default     | Comments                               |
-| :---       | :---:    | :---:       | :---                                   |
-| `name`     | yes      | -           | The user name                          |
-| `comment`  | no       | ''          | Comment string                         |
-| `shell`    | no       | '/bin/bash' | The user's command shell               |
-| `groups`   | no       | []          | Groups this user should be added to(1) |
-| `password` | no       | '!!'        | The user's password hash(2)            |
+| Key        | Required |   Default   | Comments                               |
+|:-----------|:--------:|:-----------:|:---------------------------------------|
+| `name`     |   yes    |      -      | The user name                          |
+| `comment`  |    no    |     ''      | Comment string                         |
+| `shell`    |    no    | '/bin/bash' | The user's command shell               |
+| `groups`   |    no    |     []      | Groups this user should be added to(1) |
+| `password` |    no    |    '!!'     | The user's password hash(2)            |
 
 **Remarks:**
 
