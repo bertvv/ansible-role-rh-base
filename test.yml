@@ -44,9 +44,23 @@
       - name: jane
     rhbase_repo_gpgcheck: false
     rhbase_repo_installonly_limit: 2
-    rhbase_motd: true
+    rhbase_install_packages:
+      - vim-enhanced
+      - bind-utils
+    rhbase_dynamic_motd: true
     rhbase_hosts_entry: true
-    rhbase_update: true
+    rhbase_update: false
+    rhbase_selinux_booleans:
+      - httpd_can_network_connect_db
+      - collectd_tcp_network_connect
+    rhbase_automatic_updates: true
+    rhbase_updates_type: security
+    rhbase_updates_debuglevel: 10
+    rhbase_updates_apply: true
+    rhbase_updates_download: true
+    rhbase_yum_cron_hourly_install_updates: true
+    rhbase_yum_cron_hourly_update_level: security
+    rhbase_updates_email_from: admin
+    rhbase_selinux_state: 'enforcing'
   roles:
     - rh-base
-

@@ -1,5 +1,8 @@
 # .gitignore
 
+# Ansible fact cache directory
+.ansible_cache
+
 # Hidden Vagrant-directory
 .vagrant
 

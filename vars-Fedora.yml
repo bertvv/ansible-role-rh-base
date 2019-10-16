@@ -14,4 +14,3 @@ rhbase_remove_packages:
 rhbase_repo_exclude_from_update:
   - kernel*
   - fedora-release*
-
