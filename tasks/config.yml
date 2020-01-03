@@ -92,6 +92,7 @@
   tags:
     - rhbase
     - config
+    - security
 
 - name: Config | Set PermitEmptyPasswords
   lineinfile:
@@ -105,6 +106,7 @@
   tags:
     - rhbase
     - config
+    - security
 
 - name: Config | Set IgnoreRhosts
   lineinfile:
@@ -118,6 +120,7 @@
   tags:
     - rhbase
     - config
+    - security
 
 - name: Config | Set HostbasedAuthentication
   lineinfile:
@@ -131,6 +134,7 @@
   tags:
     - rhbase
     - config
+    - security
 
 - name: Config | Set RhostsRSAAuthentication
   lineinfile:
@@ -144,3 +148,4 @@
   tags:
     - rhbase
     - config
+    - security

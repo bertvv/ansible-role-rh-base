@@ -48,7 +48,7 @@ rhbase_ssh_rhostsrsaauthentication: 'no'
 
 # Services
 rhbase_start_services: []
-rhbase_stop_services: []
+rhbase_stop_services: [rpcbind,rpcbind.socket]
 
 # Security
 rhbase_firewall_allow_services: []

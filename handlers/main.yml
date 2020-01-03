@@ -15,6 +15,15 @@
   service:
     name: "{{ rhbase_updates_service }}"
     state: restarted
+  
+- name: restart network
+  service:
+    name: network
+    state: restarted
+- name: restart rsyslog
+  service: 
+    name: rsyslog
+    state: restarted
 
 - name: restart sshd
   service:

@@ -79,3 +79,31 @@
   tags:
     - rhbase
     - security
+  
+- name: Security | Zeroconf networking should be disabled
+  lineinfile:
+    dest: /etc/sysconfig/network
+    line: NOZEROCONF=no
+    create: yes
+  notify:
+    - restart network
+  tags:
+    - rhbase
+    - security
+  
+
+- name: security | File permissions for all rsyslog log files should be set to 640 or 600
+  lineinfile:
+    dest: /etc/rsyslog.conf
+    insertafter: '^#### GLOBAL DIRECTIVES ####'
+    line: '$umask 0000'
+    line: '$FileCreateMode 0600'
+    create: yes
+  notify:
+    - restart rsyslog
+  tags:
+    - rhbase
+    - security
+
+
+
