@@ -93,14 +93,18 @@
   
 
 - name: security | File permissions for all rsyslog log files should be set to 640 or 600
+  shell: "chmod 600 {{ item }}"
+  loop: "{{ rhbase_rsyslogfiles }}"
+  tags:
+    - rhbase
+    - security
+
+- name: security | Disable support for RDS
   lineinfile:
-    dest: /etc/rsyslog.conf
-    insertafter: '^#### GLOBAL DIRECTIVES ####'
-    line: '$umask 0000'
-    line: '$FileCreateMode 0600'
-    create: yes
+    path: /etc/modprobe.d/firewalld-sysctls.conf
+    line: 'install rds /bin/true'
   notify:
-    - restart rsyslog
+    - restart modules
   tags:
     - rhbase
     - security

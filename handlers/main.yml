@@ -20,9 +20,10 @@
   service:
     name: network
     state: restarted
-- name: restart rsyslog
-  service: 
-    name: rsyslog
+
+- name: restart modules
+  service:
+    name: system-modules-load.service
     state: restarted
 
 - name: restart sshd
