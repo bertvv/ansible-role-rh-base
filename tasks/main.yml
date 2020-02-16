@@ -4,6 +4,7 @@
 - include_vars: "{{ item }}"
   with_first_found:
     - "{{ ansible_distribution }}.yml"
+    - "{{ ansible_os_family }}{{ ansible_distribution_version[:1] }}.yml"
     - "{{ ansible_os_family }}.yml"
   tags: rhbase
 
