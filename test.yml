@@ -35,7 +35,6 @@
           - seniors
         password: '$6$sPS1h6qt/hYpaChG$zgyO0DPn4k/NaTouvtiEgFXK9obiPQOOYZq4.HnLf8XuVL4hznmQxvCXiY4/y5cGUBrxJWG3frfP/lOWABu2p0'
         ssh_key: 'ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDQqRsfs7vmCBR1aZa2evVNPuTVO+FOI3M1g7bxc/AiAnhq9T1qm7lrnAnegL6LpMRN0A+3ZjPpVJqmA/bKg2S5E+4AzawFDy6s5F+h0LhxtkQ8om3IL+dFLmUhP2WL0PTv/RVcaUka8peNz/B4aQ2QSwMZ3eIUBb5zx33+EY/D77bWPSP+7N39EgOA8LAcPmxJsnPuUhyX3iHZjGbID1YI6ZDoksiuInnZbk4DcUFHNSk+x3SeOv7ztfW+h8FZUEGfkUz1hsQPPZHWxiUJR+l5YSY1oQVj/FGZ0ljDmIySdvHSeSyEjvAgPyRK3NEBSXnk4haVgYXV2hgX4NCAi89gVL3LS4X31Nnk1n/TY2HuaEc2kwnNWJvzEnksb8zy8QIWnRHmO/XuzwCV9NDnGW1lscCXnq9ug32kindNAbW9Z+9IAXRnmVIZLfwN/QYuKYdJUzs9nEe1mikXGm2JQNNghRJQnq7uJ0Hifexlh+3htrA+RVfAjLyglXHg6fU/gg0= vagrant@centos8'
-          
       - name: joe
         comment: 'Joe Smith'
         groups:

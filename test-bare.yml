@@ -12,4 +12,3 @@
   become: true
   roles:
     - rh-base
-
