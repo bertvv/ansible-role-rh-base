@@ -37,17 +37,15 @@ No specific requirements
 | `rhbase_repositories`                     | []              | List of RPM packages (including URLs) that install external repositories (e.g. `epel-release`).                       |
 | `rhbase_selinux_booleans`                 | []              | List of SELinux booleans to be set to on, e.g. httpd_can_network_connect                                              |
 | `rhbase_selinux_state`                    | enforcing       | The default SELinux state for the system. Just [leave this as is](http://stopdisablingselinux.com/).                  |
-| `rhbase_ssh_allow_groups`                 | []              | List of groups allowed to ssh. When enabled, only users in these groups are allowed ssh access. (4)                   |
+| `rhbase_ssh_allow_groups`                 | []              | List of groups allowed to ssh. When enabled, only users in these groups are allowed ssh access. (3)                   |
 | `rhbase_ssh_hostbasedauthentication`      | 'no'            | Wheter to allow host based authentication.                                                                            |
 | `rhbase_ssh_ignorerhosts`                 | 'yes'           | Specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication.      |
-| `rhbase_ssh_key`                          | -               | The public SSH key for the admin user that allows her to log in without a password. The user should exist.            |
 | `rhbase_ssh_permitemptypasswords`         | 'no'            | Wheter to allow empty passwords to logon.                                                                             |
 | `rhbase_ssh_protocol_version`             | 2               | Sets the SSH protocol version.                                                                                        |
 | `rhbase_ssh_rhostsrsaauthentication`      | 'no'            | Wheter to allow rhosts RSA authentication                                                                             |
-| `rhbase_ssh_user`                         | -               | The name of the user that will manage this machine. The SSH key will be installed into the user's home directory.(3)  |
 | `rhbase_start_services`                   | []              | List of services that should be running and enabled.                                                                  |
 | `rhbase_stop_services`                    | []              | List of services that should **not** be running                                                                       |
-| `rhbase_tz`                               | :/etc/localtime | Sets the `$TZ` environment variable (5)                                                                               |
+| `rhbase_tz`                               | :/etc/localtime | Sets the `$TZ` environment variable (4)                                                                               |
 | `rhbase_update`                           | false           | When set, a package update will be performed after installation.                                                      |
 | `rhbase_updates_apply`                    | true            | When set, automatic updates will actually install updates.                                                            |
 | `rhbase_updates_debuglevel`               | 0               | Integer denoting the level of verbosity of debug messages.                                                            |
@@ -73,11 +71,9 @@ No specific requirements
 
 (2) This is a workaround for [CentOS bug #7407](https://bugs.centos.org/view.php?id=7407). NetworkManager by default manages firewall zones, which overrides rules you add with `--permanent`.
 
-(3) Setting the variable `rhbase_ssh_user` does not actually create a user, but installs the `rhbase_ssh_key` in that user's home directory (`~/.ssh/authorized_keys`). Consequently, `rhbase_ssh_user` should be the name of an existing user, specified in `rhbase_users`.
+(3) If you use this role with Vagrant and set the variable `rhbase_ssh_allow_groups`, you need to define the `vagrant` group in the list of `rhbase_ssh_allow_groups`.
 
-(4) If you use this role with Vagrant and set the variable `rhbase_ssh_allow_groups`, you need to define the `vagrant` group in the list of `rhbase_ssh_allow_groups`.
-
-(5) Setting `$TZ` variable may reduce the number of system calls. See <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>
+(4) Setting `$TZ` variable may reduce the number of system calls. See <https://blog.packagecloud.io/eng/2017/02/21/set-environment-variable-save-thousands-of-system-calls/>
 
 ### Enabling repositories
 
@@ -104,6 +100,7 @@ rhbase_users:
       - users
       - devs
     password: '$6$WIFkXf07Kn3kALDp$fHbqRKztuufS895easdT [...]'
+    ssh_key: 'ssh-rsa AAAACk44DcUFHNSk+x3SeOv7ztfWOP2sL [...]'
   - name: janedoe
 ```
 
@@ -116,6 +113,7 @@ The only mandatory key is `name`.
 | `shell`    |    no    | '/bin/bash' | The user's command shell               |
 | `groups`   |    no    |     []      | Groups this user should be added to(1) |
 | `password` |    no    |    '!!'     | The user's password hash(2)            |
+| `ssh_key`  |    no    |      -      | A public SSH key                       |
 
 **Remarks:**
 
