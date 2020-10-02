@@ -51,7 +51,7 @@
 
 - name: Config | Don’t override firewall zone in ifup-eth script
   shell: "sed -i -e '/Inform firewall which network zone/,+4d' /etc/sysconfig/network-scripts/ifup-eth"
-  when: not rhbase_override_firewalld_zones and ifup_eth_match.stdout != ''
+  when: not rhbase_override_firewalld_zones and ifup_eth_match.stdout|length>0
   tags:
     - rhbase
     - config
@@ -68,7 +68,7 @@
 
 - name: Config | Don’t override firewall zone in ifup-post script
   shell: "sed -i -e '/Inform firewall which network zone/,+4d' /etc/sysconfig/network-scripts/ifup-post"
-  when: not rhbase_override_firewalld_zones and ifup_post_match.stdout != ''
+  when: not rhbase_override_firewalld_zones and ifup_post_match.stdout|length>0
   tags:
     - rhbase
     - config
@@ -85,9 +85,9 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^Protocol'
-    line: "Protocol {{rhbase_ssh_protocol_version}}"
+    line: "Protocol {{ rhbase_ssh_protocol_version }}"
   notify: restart sshd
   tags:
     - rhbase
@@ -97,7 +97,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^PermitEmptyPasswords'
     insertafter: '^#PermitEmptyPasswords'
     line: "PermitEmptyPasswords {{ rhbase_ssh_permitemptypasswords }}"
@@ -110,7 +110,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^IgnoreRhosts'
     insertafter: '^#IgnoreRhosts'
     line: "IgnoreRhosts {{ rhbase_ssh_ignorerhosts }}"
@@ -123,7 +123,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^HostbasedAuthentication'
     insertafter: '^#HostbasedAuthentication'
     line: "HostbasedAuthentication {{ rhbase_ssh_hostbasedauthentication }}"
@@ -136,7 +136,7 @@
   lineinfile:
     dest: /etc/ssh/sshd_config
     state: present
-    create: yes
+    create: true
     regexp: '^RhostsRSAAuthentication'
     insertafter: '^#RhostsRSAAuthentication'
     line: "RhostsRSAAuthentication {{ rhbase_ssh_rhostsrsaauthentication }}"
