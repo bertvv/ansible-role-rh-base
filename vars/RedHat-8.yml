@@ -10,12 +10,11 @@ rhbase_dependencies:
   - python3-libselinux
   - python3-libsemanage
 
-rhbase_package_manager: yum
-rhbase_package_manager_configuration: /etc/yum.conf
+rhbase_package_manager: dnf
+rhbase_package_manager_configuration: /etc/dnf/dnf.conf
 
 rhbase_updates_packages:
-  - yum-cron
-rhbase_updates_service: yum-cron
+  - dnf-automatic
+rhbase_updates_service: dnf-automatic.timer
 rhbase_updates_config:
-  - yum-cron.conf
-  - yum-cron-hourly.conf
+  - automatic.conf
