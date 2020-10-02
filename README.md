@@ -129,7 +129,7 @@ No dependencies.
 
 ## Example Playbook
 
-See the [test playbook](https://github.com/bertvv/ansible-role-rh-base/blob/tests/test.yml)
+See the [test playbook](https://github.com/bertvv/ansible-role-rh-base/blob/vagrant-tests/test.yml)
 
 ## Testing
 
