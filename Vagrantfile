@@ -3,8 +3,9 @@
 VAGRANTFILE_API_VERSION = '2'
 
 hosts = [
-  { maintainer: 'bento', distro: 'centos-7.6', ip: '192.168.56.4' },
-  { maintainer: 'bento', distro: 'fedora-30', ip: '192.168.56.5' }
+  { maintainer: 'bento', distro: 'centos-7.6', ip: '192.168.56.7' },
+  { maintainer: 'bento', distro: 'centos-8', ip: '192.168.56.8' },
+  { maintainer: 'bento', distro: 'fedora-32', ip: '192.168.56.32' }
 ]
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
