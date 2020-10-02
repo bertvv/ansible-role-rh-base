@@ -2,6 +2,22 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 4.0.0 - 2019-10-02
+
+## Added
+
+- (GH-19) Variable `rhbase_users.ssh_key` for specifying an optional public SSH key for remote login.
+- (GH-20) Support for CentOS 8
+
+## Changed
+
+- (GH-21, GH-24) Correct link to test playbook
+- Fixed deprecation warnings for Ansible >=2.9: module `firewalld` replaced with `ansible.posix.firewalld`.
+
+## Removed
+
+- Variables `rhbase_ssh_user` and `rhbase_ssh_key`. It is now possible to specify an SSH key for each user in `rhbase_users`. (**Breaking change:**)
+
 ## 3.0.0 - 2019-10-16
 
 ### Added
