@@ -2,7 +2,13 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
-## 4.0.0 - 2019-10-02
+## 4.0.1 - 2020-10-02
+
+### Changed
+
+- Fixed ansible-lint and yamllint warnings
+
+## 4.0.0 - 2020-10-02
 
 ## Added
 
