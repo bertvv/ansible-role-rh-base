@@ -2,6 +2,12 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 4.0.2 - 2021-08-26
+
+### Changed
+
+- Undo module name change to new collection.module format and revert to the "traditional" naming scheme. On the supported systems, the default Ansible version is still <= 2.9, so this change (notably `ansible.posix.firewalld`) caused problems when running Ansible locally.
+
 ## 4.0.1 - 2020-10-02
 
 ### Changed
