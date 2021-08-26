@@ -31,7 +31,7 @@
     - security
 
 - name: Security | Make sure basic services can pass through firewall
-  ansible.posix.firewalld:
+  firewalld:
     service: "{{ item }}"
     permanent: true
     state: enabled
@@ -45,7 +45,7 @@
     - security
 
 - name: Security | Make sure user specified services can pass through firewall
-  ansible.posix.firewalld:
+  firewalld:
     service: "{{ item }}"
     permanent: true
     state: enabled
@@ -57,7 +57,7 @@
     - security
 
 - name: Security | Make sure user specified ports can pass through firewall
-  ansible.posix.firewalld:
+  firewalld:
     port: "{{ item }}"
     permanent: true
     state: enabled
@@ -69,7 +69,7 @@
     - security
 
 - name: Security | Make sure specified interfaces are added
-  ansible.posix.firewalld:
+  firewalld:
     interface: "{{ item }}"
     zone: public
     permanent: true
