@@ -2,6 +2,12 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 4.0.3 - 2021-08-30
+
+### Changed
+
+- Add some rules to search for distribution-specific variable files so AlmaLinux (and probably also Rocky Linux) are also recognized and supported.
+
 ## 4.0.2 - 2021-08-26
 
 ### Changed
