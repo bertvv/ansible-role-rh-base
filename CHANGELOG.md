@@ -2,6 +2,17 @@
 
 This file contains al notable changes to the bertvv.rh-base Ansible role. This file adheres to the guidelines of [http://keepachangelog.com/](http://keepachangelog.com/). Versioning follows [Semantic Versioning](http://semver.org/).
 
+## 4.0.4 - 2022-10-07
+
+### Changed
+
+- Updated support for RHEL-9 by restructuring the vars files.
+- (GH-25) Fix error where list of user groups is treated as a string. Credit: @thomasaelbrecht
+- Bump supported Ansible version to 2.13
+- Remove deprecated SSH server option RhostsRSAAuthentication
+- Fix error when rhbase_ssh_allow_groups (AllowGroups in sshd config) is empty
+- Renamed `master` branch to `main`.
+
 ## 4.0.3 - 2021-08-30
 
 ### Changed

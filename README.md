@@ -42,7 +42,6 @@ No specific requirements
 | `rhbase_ssh_ignorerhosts`                 | 'yes'           | Specifies that .rhosts and .shosts files will not be used in RhostsRSAAuthentication or HostbasedAuthentication.      |
 | `rhbase_ssh_permitemptypasswords`         | 'no'            | Wheter to allow empty passwords to logon.                                                                             |
 | `rhbase_ssh_protocol_version`             | 2               | Sets the SSH protocol version.                                                                                        |
-| `rhbase_ssh_rhostsrsaauthentication`      | 'no'            | Wheter to allow rhosts RSA authentication                                                                             |
 | `rhbase_start_services`                   | []              | List of services that should be running and enabled.                                                                  |
 | `rhbase_stop_services`                    | []              | List of services that should **not** be running                                                                       |
 | `rhbase_tz`                               | :/etc/localtime | Sets the `$TZ` environment variable (4)                                                                               |
