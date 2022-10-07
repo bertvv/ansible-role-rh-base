@@ -31,6 +31,7 @@
     create: true
     regexp: '^AllowGroups'
     line: "AllowGroups={{ ' '.join(rhbase_ssh_allow_groups) }}"
+  when: rhbase_ssh_allow_groups|length>0
   notify: restart sshd
   tags:
     - rhbase
