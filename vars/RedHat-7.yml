@@ -6,15 +6,16 @@ rhbase_systemd_services:
   - systemd-tmpfiles-setup
 
 rhbase_dependencies:
+  - libselinux-python
+  - libsemanage-python
   - firewalld
-  - python3-libselinux
-  - python3-libsemanage
 
-rhbase_package_manager: dnf
-rhbase_package_manager_configuration: /etc/dnf/dnf.conf
+rhbase_package_manager: yum
+rhbase_package_manager_configuration: /etc/yum.conf
 
 rhbase_updates_packages:
-  - dnf-automatic
-rhbase_updates_service: dnf-automatic.timer
+  - yum-cron
+rhbase_updates_service: yum-cron
 rhbase_updates_config:
-  - automatic.conf
+  - yum-cron.conf
+  - yum-cron-hourly.conf
