@@ -5,7 +5,7 @@ galaxy_info:
     Ansible role for basic setup of a server with a RedHat-based Linux
     distribution (CentOS, Fedora, RHEL, ...) with the systemd init system.
   license: BSD
-  min_ansible_version: 2.9
+  min_ansible_version: 2.13
   platforms:
     - name: EL
       versions:
