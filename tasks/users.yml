@@ -4,7 +4,7 @@
 ---
 - name: Users | Process groups
   set_fact:
-    rhbase_user_groups: "{{ rhbase_user_groups }} + {{ item.groups|default([]) }}"
+    rhbase_user_groups: "{{ rhbase_user_groups + item.groups|default([]) }}"
   with_items: "{{ rhbase_users }}"
   tags:
     - rhbase
